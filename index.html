@@ -1,53 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/903611dc5d.js" crossorigin="anonymous"></script>
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/903611dc5d.js" crossorigin="anonymous"></script>
+  <title>Document</title>
 </head>
-<body>
-    <!--Navbar-->
-    <nav class="navbar has-background-info" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-          <a class="navbar-item" href="">
-            <h1 class="title is-size-2-desktop is-size-3 has-text-white">
-                <i class="fas fa-wallet mr-2" aria-hidden="true"></i>
-                AhorrADAs
-              </h1>
-          </a>
-      
-          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
+
+<body class="has-background-light">
+
+  <!--Navbar-->
+
+  <nav class="navbar has-background-info" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="">
+        <h1 class="title is-size-2-desktop is-size-3 has-text-white">
+          <i class="fas fa-wallet mr-2" aria-hidden="true"></i>
+          AhorrADAs
+        </h1>
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item has-text-white">
+          <i class="fa-solid fa-scale-unbalanced-flip mr-2"></i>
+          Balance
+        </a>
+        <a class="navbar-item has-text-white">
+          <i class="fas fa-tag mr-2"></i>
+          Categorías
+        </a>
+        <a class="navbar-item has-text-white">
+          <i class="fa-solid fa-chart-pie mr-2"></i>
+          Reportes
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contenedor principal-->
+
+  <div class="container mt-6">
+    <div class="columns">
+      <div class="column is-3">
+
+        <!--Contenedor Balance-->
+
+        <div class="column box column-balance">
+          <h4 class="title is-4 mb-5">
+            Balance
+          </h4>
+          <table class="table is-fullwidth">
+            <tbody>
+              <tr>
+                <th class="is-size-5 has-text-weight-normal">Ganancias</th>
+                <td class="has-text-right is-size-5">
+                  +0
+                </td>
+              </tr>
+              <tr>
+                <th class="is-size-5 has-text-weight-normal">Gastos</th>
+                <td class="has-text-right is-size-5">
+                  -0
+                </td>
+              </tr>
+              <tr>
+                <th class="has-text-weight-medium is-size-4">Total</th>
+                <td class="has-text-right is-size-4">
+                  $0
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-      
-        <div id="navbarBasicExample" class="navbar-menu">
-          <div class="navbar-end">
-            <a class="navbar-item has-text-white">
-                <i class="fa-solid fa-scale-unbalanced-flip mr-2"></i>
-              Balance
-            </a>
-      
-            <a class="navbar-item has-text-white">
-                <i class="fas fa-tag mr-2"></i>
-              Categorías
-            </a>
-      
-              <a class="navbar-item has-text-white">
-                <i class="fa-solid fa-chart-pie mr-2"></i>
-                Reportes
-              </a>
-      
-          </div>
-      
-          
+
+        <!--Contenedor Filtros-->
+
+        <div class="column has-background-warning mt-4 column-filter box">
+          <h4 class="title is-4">
+            Filtros
+          </h4>
         </div>
-      </nav>
-    <script src="script.js"></script>
+      </div>
+
+      <!--Contenedor Operaciones-->
+      <div class="column is-7">
+        <div class="column has-background-danger column-operation box">
+          <h4 class="title is-4">
+            Operaciones
+          </h4>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
 </body>
+
 </html>
