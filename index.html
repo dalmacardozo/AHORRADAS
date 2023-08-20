@@ -49,11 +49,11 @@
   <!-- Contenedor principal-->
 
   <div class="container mt-6">
-    <div class="columns">
+    <div class="columns is-justify-content-center">
       <div class="column is-3">
 
         <!--Contenedor Balance-->
-        <section class="column box column-balance p-5">
+        <div class="column box column-balance p-5">
           <h4 class="title is-4">
             Balance
           </h4>
@@ -79,19 +79,19 @@
               </tr>
             </tbody>
           </table>
-        </section>
+        </div>
 
         <!--Contenedor Filtros-->
 
-        <section class="column has-background-info-light mt-4 column-filter box p-5">
+        <div class="column has-background-info-light mt-4 column-filter box p-5">
           <div class="columns">
-            <div class="column">
+            <div class="column is-6">
               <h4 class="title is-4">
                 Filtros
               </h4>
             </div>
-            <div class="column">
-              <button class="button is-ghost pb-3">Ocultar filtros</button>
+            <div class="column is-6">
+              <button class="button is-ghost pb-3 p-0">Ocultar filtros</button>
             </div>
           </div>
           <form>
@@ -136,13 +136,13 @@
               </div>
             </div>
           </form>
-        </section>
+        </div>
       </div>
 
       <!--Contenedor Operaciones-->
       
-      <section class="column is-7 mt-3">
-        <div class="columns column-operation box p-5 is-flex-wrap-wrap">
+      <div class="column is-7">
+        <div class="columns column-operation box p-5 is-flex-wrap-wrap m-0 ">
           <div class="column is-6 container-superior">
           <h4 class="title is-4">
             Operaciones
@@ -155,9 +155,11 @@
             <figure class="image is-5by3">
               <img src="img.png">
             </figure>
+            <h4 class="title has-text-centered">Sin resultados</h4>
+            <p class="has-text-centered">Cambia los filtros o agrega operaciones</p>
           </div>
         </div>
-      </section>
+      </div>
     </div>
   </div>
   <script src="script.js"></script>
