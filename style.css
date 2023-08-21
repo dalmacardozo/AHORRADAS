@@ -1,0 +1,15 @@
+body{
+    min-height: 100vh;
+}
+
+.container-categorias{
+    height: 70vh;
+
+}
+
+.box-categorias{
+    height: 50vh ;
+    width: 90vh;
+
+}
+
