@@ -1,0 +1,25 @@
+body{
+    min-height: 100vh;
+}
+
+.column-balance {
+    height: 30vh;
+}
+
+.column-operation{
+    height: 70vh;
+}
+
+.column-filter{
+    height: 50vh;
+
+}
+
+.container-superior{
+    height: 10%;
+}
+
+.column-img {
+    height: 90%
+
+}
