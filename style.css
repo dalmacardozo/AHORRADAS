@@ -43,3 +43,13 @@ body{
     width: 90%;
 }
 
+.container-reportes{
+    height: 80vh;
+    width: 95vh;
+}
+
+.box-reportes{
+    height: 65vh;
+    width: 10vh;
+}
+
