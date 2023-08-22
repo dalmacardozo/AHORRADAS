@@ -54,15 +54,17 @@
       <div class="container container-categorias is-flex is-justify-content-center is-align-items-center" >
       <section class="section box-categorias box p-4">
         <h1 class="title is-2 has-text-weight-bold">Categorías</h1>
-        <div class="columns container-form-categorias px-5 py-2">
-          <div class="column is-four-fifths has-background-info"></div>
-          <div class="column has-background-danger"></div>
+        <div class="container-form is-flex is-justify-content-space-between">
+        <div class="field input-nombre">
+          <label class="label">Name</label>
+          <div class="control">
+            <input class="input" type="text" placeholder="Text input">
+          </div>
         </div>
-         <div class="columns container-lista-categorias px-5 ">
-          <div class="column is-four-fifths has-background-primary"></div>
-          <div class="column has-background-info"></div>
-          <div class="column has-background-danger"></div>
-         </div>
+        <div class="buttons btn-agregar">
+          <button class="button is-info">Primary</button>
+        </div>
+        </div>
       </section>
     </div>
     <script src="script.js"></script>

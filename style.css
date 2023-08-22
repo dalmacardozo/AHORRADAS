@@ -3,20 +3,21 @@ body{
 }
 
 .container-categorias{
-    height: 70vh;
+    height: 80vh;
 
 }
 
 .box-categorias{
-    height: 50vh ;
+    height: 60vh ;
     width: 90vh;
 
 }
 
-.container-form-categorias{
-    height: 20%;
+.container-form{
+    width: 100%;
 }
-.container-lista-categorias{
-    height: 70%;
+
+.input-nombre{
+    width: 90%;
 }
 
