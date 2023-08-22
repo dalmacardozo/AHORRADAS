@@ -23,3 +23,23 @@ body{
     height: 90%
 
 }
+
+.container-categorias{
+    height: 80vh;
+
+}
+
+.box-categorias{
+    height: 60vh ;
+    width: 90vh;
+
+}
+
+.container-form{
+    width: 100%;
+}
+
+.input-nombre{
+    width: 90%;
+}
+
