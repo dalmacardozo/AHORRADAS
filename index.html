@@ -53,6 +53,7 @@
       <div class="column is-3">
 
         <!--Contenedor Balance-->
+
         <div class="column box column-balance p-5">
           <h4 class="title is-4">
             Balance
@@ -142,7 +143,7 @@
       <!--Contenedor Operaciones-->
       
       <div class="column is-7">
-        <div class="columns column-operation box p-5 is-flex-wrap-wrap m-0 ">
+        <div class="columns column-operation box p-5 is-flex-wrap-wrap m-0">
           <div class="column is-6 container-superior">
           <h4 class="title is-4">
             Operaciones
@@ -164,11 +165,63 @@
     </div>
   </div>
 
-      <!--Sección categorías
+        <!--Sección +nueva operación-->
 
-      Contenedor superior
+        <div class="container is-flex is-justify-content-center is-align-items-center mt-6 is-hidden">
+        <section class="section container-newoperation is-flex is-flex-direction-column box">
+          <h1 class="title">Nueva operación</h1>
+          <div class="field mt-6">
+            <label class="label">Descripción</label>
+            <div class="control">
+              <input class="input" type="text">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Monto</label>
+            <div class="control">
+              <input class="input" value="0" type="number">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Tipo</label>
+            <div class="control">
+              <div class="select is-fullwidth">
+                <select>
+                  <option>Gastos</option>
+                  <option>Ganancias</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Categoría</label>
+            <div class="control">
+              <div class="select is-fullwidth">
+                <select>
+                  <option>Comidas</option>
+                  <option>Servicios</option>
+                  <option>Salidas</option>
+                  <option>Educación</option>
+                  <option>Transporte</option>
+                  <option>Trabajo</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Fecha</label>
+            <div class="control">
+              <input class="input" type="date">
+            </div>
+          </div>
+        </section>
+      </div>
 
-      <div class="container container-categorias is-flex is-justify-content-center is-align-items-center" >
+      <!--Sección categorías-->
+
+      <!--Contenedor superior-->
+
+      <div class="container container-categorias is-flex is-justify-content-center is-align-items-center is-hidden" >
       <section class="section box-categorias box p-4">
         <h1 class="title is-2 has-text-weight-bold">Categorías</h1>
         <div class="container-form is-flex is-justify-content-space-between">
@@ -183,9 +236,9 @@
         </div>
         </div>
         
-        Contenedor inferior 
+        <!--Contenedor inferior-->
 
-        <div class="container-form is-flex is-justify-content-space-between p-3">
+        <div class="container-form is-flex is-justify-content-space-between p-3 is-hidden">
           <div>
             <p class="has-text-info tag is-info is-light mt-4">Comida</p>
           </div>
@@ -240,11 +293,11 @@
                     </div>
                     </div>
       </section>
-    </div>-->
+    </div>
 
-      <!--Sección Reportes
+      <!--Sección Reportes-->
 
-      <div class="container container-reportes is-flex is-justify-content-center is-align-items-center" >
+      <div class="container container-reportes is-flex is-justify-content-center is-align-items-center is-hidden">
       <section class="section container box-reportes box p-0 ">
         <h1 class="title is-2 has-text-weight-bold p-3">Reportes</h1>
         <figure class="is-flex is-justify-content-center">
@@ -253,7 +306,7 @@
         <h4 class="title has-text-centered">Operaciones insuficientes</h4>
         <p class="has-text-centered">Prueba agrgando más operaciones</p>
       </section>
-    </div>-->
+    </div>
 
 
   <script src="script.js"></script>
