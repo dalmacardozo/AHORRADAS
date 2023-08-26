@@ -13,8 +13,9 @@ const balanceContainer = $('.column-balance');
 const reportesContainer = $('.container-reportes');
 const operationContainer = $('.column-operation');
 const newOperationButton = $('#newOperationBtn');
+const newOperationContainer = $('.container-newOperation')
 
-
+// DOM FUNCTIONS
 const hideElement = (element) => {
     element.classList.add('is-hidden');
 }
@@ -46,3 +47,21 @@ reportesSection.addEventListener('click', () => {
     hideElement(filterContainer);
     showElement(reportesContainer);
 })
+
+newOperationButton.addEventListener('click', () =>{
+    hideElement(filterContainer);
+    hideElement(balanceContainer);
+    hideElement(operationContainer);
+    showElement(newOperationContainer);
+})
+
+//LOCAL STORAGE
+const getDataFromLocalStorage = (key) => {
+    return JSON.parse(localStorage.getItem(key));
+};
+const sendDataFromLocalStorage = (key, array) => {
+    return localStorage.setItem(key, JSON.stringify(array));
+};
+const removeDataFromLocalStorage = (key) => {
+    localStorage.removeItem(key);
+};
