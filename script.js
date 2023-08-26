@@ -54,3 +54,14 @@ newOperationButton.addEventListener('click', () =>{
     hideElement(operationContainer);
     showElement(newOperationContainer);
 })
+
+//LOCAL STORAGE
+const getDataFromLocalStorage = (key) => {
+    return JSON.parse(localStorage.getItem(key));
+};
+const sendDataFromLocalStorage = (key, array) => {
+    return localStorage.setItem(key, JSON.stringify(array));
+};
+const removeDataFromLocalStorage = (key) => {
+    localStorage.removeItem(key);
+};
