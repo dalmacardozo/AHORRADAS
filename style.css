@@ -43,13 +43,14 @@ body{
     width: 90%;
 }
 
-.container-reportes{
+.container-reportes, .container-newoperation{
     height: 80vh;
     width: 95vh;
 }
 
-.box-reportes{
+.box-reportes {
     height: 65vh;
     width: 10vh;
 }
+
 

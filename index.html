@@ -52,7 +52,7 @@
     <div class="columns is-justify-content-center">
       <div class="column is-3">
 
-        <!--Contenedor Balance-->
+        <!--Contenedor Balance
         <div class="column box column-balance p-5">
           <h4 class="title is-4">
             Balance
@@ -81,7 +81,7 @@
           </table>
         </div>
 
-        <!--Contenedor Filtros-->
+        <!--Contenedor Filtros
 
         <div class="column has-background-info-light mt-4 column-filter box p-5">
           <div class="columns">
@@ -139,7 +139,7 @@
         </div>
       </div>
 
-      <!--Contenedor Operaciones-->
+      <!--Contenedor Operaciones
       
       <div class="column is-7">
         <div class="columns column-operation box p-5 is-flex-wrap-wrap m-0 ">
@@ -162,7 +162,58 @@
 
       </div>
     </div>
-  </div>
+  </div>-->
+
+        <!--Sección +nueva operación-->
+
+        <section class="section container box container-newoperation is-flex is-flex-direction-column">
+          <h1 class="title">Nueva operación</h1>
+          <div class="field mt-6">
+            <label class="label">Descripción</label>
+            <div class="control">
+              <input class="input" type="text">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Monto</label>
+            <div class="control">
+              <input class="input" value="0" type="number">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Tipo</label>
+            <div class="control">
+              <div class="select is-fullwidth">
+                <select>
+                  <option>Gastos</option>
+                  <option>Ganancias</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Categoría</label>
+            <div class="control">
+              <div class="select is-fullwidth">
+                <select>
+                  <option>Comidas</option>
+                  <option>Servicios</option>
+                  <option>Salidas</option>
+                  <option>Educación</option>
+                  <option>Transporte</option>
+                  <option>Trabajo</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Fecha</label>
+            <div class="control">
+              <input class="input" type="date" placeholder="Text input">
+            </div>
+          </div>
+        </section>
+
 
       <!--Sección categorías
 
