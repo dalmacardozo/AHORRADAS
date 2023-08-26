@@ -30,15 +30,15 @@
     </div>
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-end">
-        <a class="navbar-item has-text-white">
+        <a class="navbar-item has-text-white" id="balance">
           <i class="fa-solid fa-scale-unbalanced-flip mr-2"></i>
           Balance
         </a>
-        <a class="navbar-item has-text-white">
+        <a class="navbar-item has-text-white" id="categories">
           <i class="fas fa-tag mr-2"></i>
           Categorías
         </a>
-        <a class="navbar-item has-text-white">
+        <a class="navbar-item has-text-white" id="reports">
           <i class="fa-solid fa-chart-pie mr-2"></i>
           Reportes
         </a>
@@ -83,7 +83,6 @@
         </div>
 
         <!--Contenedor Filtros-->
-
         <div class="column has-background-info-light mt-4 column-filter box p-5">
           <div class="columns">
             <div class="column is-6">
@@ -92,7 +91,7 @@
               </h4>
             </div>
             <div class="column is-6">
-              <button class="button is-ghost pb-3 p-0">Ocultar filtros</button>
+              <button class="button is-ghost pb-3 p-0" id="hideFilters">Ocultar filtros</button>
             </div>
           </div>
           <form>
@@ -138,19 +137,20 @@
             </div>
           </form>
         </div>
+        <button class="button is-ghost pb-3 p-0 is-hidden" id="showFilters">Mostrar filtros</button>
       </div>
 
       <!--Contenedor Operaciones-->
-      
+
       <div class="column is-7">
         <div class="columns column-operation box p-5 is-flex-wrap-wrap m-0">
           <div class="column is-6 container-superior">
-          <h4 class="title is-4">
-            Operaciones
-          </h4>
-        </div>
-        <div class="column is-6 container-superior is-flex is-justify-content-right">
-            <button class="button is-info">+ Nueva operación</button>
+            <h4 class="title is-4">
+              Operaciones
+            </h4>
+          </div>
+          <div class="column is-6 container-superior is-flex is-justify-content-right">
+            <button class="button is-info" id="newOperationBtn">+ Nueva operación</button>
           </div>
           <div class="column is-fullwidth column-img">
             <figure class="is-flex is-justify-content-center">
@@ -314,9 +314,10 @@
         </div>
         </div>
 
+  <!-- Sección Reportes -->
       <!--Sección Reportes-->
 
-      <div class="container container-reportes is-flex is-justify-content-center is-align-items-center is-hidden">
+      <div class="container container-reportes is-flex is-justify-content-center is-align-items-center is-hidden" >
       <section class="section container box-reportes box p-0 ">
         <h1 class="title is-2 has-text-weight-bold p-3">Reportes</h1>
         <figure class="is-flex is-justify-content-center">
@@ -325,7 +326,7 @@
         <h4 class="title has-text-centered">Operaciones insuficientes</h4>
         <p class="has-text-centered">Prueba agrgando más operaciones</p>
       </section>
-    </div>
+    </div>-
 
 
   <script src="script.js"></script>
