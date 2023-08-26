@@ -45,11 +45,15 @@ body{
 
 .container-reportes{
     height: 80vh;
-    width: 95vh;
+    width: 90vh;
 }
 
 .box-reportes{
     height: 65vh;
     width: 10vh;
+}
+
+.container-newoperation, .container-editar{
+    width: 90vh;
 }
 
