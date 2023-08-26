@@ -13,8 +13,9 @@ const balanceContainer = $('.column-balance');
 const reportesContainer = $('.container-reportes');
 const operationContainer = $('.column-operation');
 const newOperationButton = $('#newOperationBtn');
+const newOperationContainer = $('.container-newOperation')
 
-
+// DOM FUNCTIONS
 const hideElement = (element) => {
     element.classList.add('is-hidden');
 }
@@ -45,4 +46,11 @@ reportesSection.addEventListener('click', () => {
     hideElement(operationContainer);
     hideElement(filterContainer);
     showElement(reportesContainer);
+})
+
+newOperationButton.addEventListener('click', () =>{
+    hideElement(filterContainer);
+    hideElement(balanceContainer);
+    hideElement(operationContainer);
+    showElement(newOperationContainer);
 })
