@@ -1,0 +1,55 @@
+body{
+    min-height: 100vh;
+}
+
+.column-balance {
+    height: 30vh;
+}
+
+.column-operation{
+    height: 70vh;
+}
+
+.column-filter{
+    height: 50vh;
+
+}
+
+.container-superior{
+    height: 10%;
+}
+
+.column-img {
+    height: 90%
+
+}
+
+.container-categorias{
+    height: 80vh;
+
+}
+
+.box-categorias{
+    height: 60vh ;
+    width: 90vh;
+
+}
+
+.container-form{
+    width: 100%;
+}
+
+.input-nombre{
+    width: 90%;
+}
+
+.container-reportes{
+    height: 80vh;
+    width: 95vh;
+}
+
+.box-reportes{
+    height: 65vh;
+    width: 10vh;
+}
+
