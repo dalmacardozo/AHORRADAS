@@ -53,6 +53,7 @@ body{
     width: 10vh;
 }
 
-.container-newoperation{
+.container-newoperation, .container-editar{
     width: 90vh;
 }
+
