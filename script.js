@@ -184,7 +184,12 @@ const categoriesList = [];
 const addItem = () => {
    let newItem = $('#categoriesInput').value;
    categoriesList.push(newItem);
+   let liContent = document.createTextNode(`${newItem}`);
+   let liItem = document.createElement('li');
+   liItem.appendChild(liContent);
+   $('#list').appendChild(liItem);
    console.log(categoriesList)
 }
 
 $('#addButton').addEventListener('click', addItem)
+
