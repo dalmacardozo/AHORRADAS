@@ -176,3 +176,15 @@ const deleteOperationFromTable = (operationId) => {
         }
     }
 };
+
+//CATEGORIESFUNCTIONS
+
+const categoriesList = [];
+
+const addItem = () => {
+   let newItem = $('#categoriesInput').value;
+   categoriesList.push(newItem);
+   console.log(categoriesList)
+}
+
+$('#addButton').addEventListener('click', addItem)
