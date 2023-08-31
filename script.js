@@ -186,6 +186,7 @@ const addItem = () => {
    categoriesList.push(newItem);
    let liContent = document.createTextNode(`${newItem}`);
    let liItem = document.createElement('li');
+   liItem.classList.add('has-text-info', 'tag', 'is-info', 'is-light', 'mt-4');
    liItem.appendChild(liContent);
    $('#list').appendChild(liItem);
    console.log(categoriesList)
