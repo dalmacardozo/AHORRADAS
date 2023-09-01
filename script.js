@@ -186,8 +186,16 @@ const addItem = () => {
    categoriesList.push(newItem);
    let liContent = document.createTextNode(`${newItem}`);
    let liItem = document.createElement('li');
+   let deleteButton = document.createElement('button');
+   let editButton = document.createElement('button')
    liItem.classList.add('has-text-info', 'tag', 'is-info', 'is-light', 'mt-4');
+   deleteButton.classList.add('button', 'is-ghost', 'is-size-7', 'ml-6');
+   deleteButton.innerText = "Eliminar";
+   editButton.classList.add('button', 'is-ghost', 'is-size-7');
+   editButton.innerText = "Editar";
    liItem.appendChild(liContent);
+   liItem.appendChild(deleteButton);
+   liItem.appendChild(editButton)
    $('#list').appendChild(liItem);
    console.log(categoriesList)
 }
