@@ -165,89 +165,94 @@
     </div>
   </div>
 
-        <!--Sección +nueva operación-->
+  <!--Sección +nueva operación-->
 
-        <div class="container is-flex is-justify-content-center is-align-items-center mt-6 ">
-        <section class="section container-newOperation is-flex is-flex-direction-column box is-hidden">
-          <h1 class="title">Nueva operación</h1>
-          <div class="field mt-6">
-            <label class="label">Descripción</label>
-            <div class="control">
-              <input class="input" type="text" id="description">
-            </div>
-          </div>
-          <div class="field">
-            <label class="label">Monto</label>
-            <div class="control">
-              <input class="input" value="0" type="number" id="amountOperation">
-            </div>
-          </div>
-          <div class="field">
-            <label class="label">Tipo</label>
-            <div class="control">
-              <div class="select is-fullwidth">
-                <select id="operationType">
-                  <option>Gastos</option>
-                  <option>Ganancias</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="field">
-            <label class="label">Categoría</label>
-            <div class="control">
-              <div class="select is-fullwidth">
-                <select id="selectCategoryOperation">
-                  <option>Comidas</option>
-                  <option>Servicios</option>
-                  <option>Salidas</option>
-                  <option>Educación</option>
-                  <option>Transporte</option>
-                  <option>Trabajo</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="field">
-            <label class="label">Fecha</label>
-            <div class="control">
-              <input class="input" type="date" id="dateOperation">
-            </div>
-          </div>
-          <div class="buttons">
-            <button class="button is-link is-light">Cancelar</button>
-            <button class="button is-primary" id="createOperationBtn">Agregar</button>
-          </div>
-          <div id="tableContainer"> </div>
-        </section>
+  <div class="container is-flex is-justify-content-center is-align-items-center mt-6 ">
+    <section class="section container-newOperation is-flex is-flex-direction-column box is-hidden">
+      <h1 class="title">Nueva operación</h1>
+      <div class="field mt-6">
+        <label class="label">Descripción</label>
+        <div class="control">
+          <input class="input" type="text" id="description">
+        </div>
       </div>
+      <div class="field">
+        <label class="label">Monto</label>
+        <div class="control">
+          <input class="input" value="0" type="number" id="amountOperation">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Tipo</label>
+        <div class="control">
+          <div class="select is-fullwidth">
+            <select id="operationType">
+              <option>Gastos</option>
+              <option>Ganancias</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Categoría</label>
+        <div class="control">
+          <div class="select is-fullwidth">
+            <select id="selectCategoryOperation">
+              <option>Comidas</option>
+              <option>Servicios</option>
+              <option>Salidas</option>
+              <option>Educación</option>
+              <option>Transporte</option>
+              <option>Trabajo</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Fecha</label>
+        <div class="control">
+          <input class="input" type="date" id="dateOperation">
+        </div>
+      </div>
+      <div class="buttons">
+        <button class="button is-link is-light">Cancelar</button>
+        <button class="button is-primary" id="createOperationBtn">Agregar</button>
+      </div>
+      <div id="tableContainer"> </div>
+    </section>
+  </div>
 
-      <!--Sección categorías-->
+  <!--Sección categorías-->
 
-      <!--Contenedor superior-->
+  <!--Contenedor superior-->
 
-      <div class="container container-categorias is-flex is-justify-content-center is-align-items-center is-hidden" >
-      <section class="section box-categorias box p-4">
-        <h1 class="title is-2 has-text-weight-bold">Categorías</h1>
-        <div class="container-form is-flex is-justify-content-space-between">
+  <div class="container container-categorias is-flex is-justify-content-center is-align-items-center is-hidden">
+    <section class="section box-categorias box p-4">
+      <h1 class="title is-2 has-text-weight-bold">Categorías</h1>
+      <div class="container-form is-flex is-justify-content-space-between">
+
         <div class="field input-nombre">
           <label class="label">Nombre</label>
           <div class="control">
-            <input class="input" type="text" id="categoriesInput">
+            <form id="categoriesForm">
+              <input class="input" type="text" id="categoriesInput" placeholder="Ingrese el nombre de la categoría que quisiera agregar">
+            </form>
           </div>
         </div>
         <div class="buttons p-3 mt-4">
           <button class="button is-info" id="addButton">Agregar</button>
         </div>
-        </div>
-        
-        <!--Contenedor inferior-->
+      </div>
 
-        <div class="container-form is-flex is-justify-content-space-between p-3">
-          <div>
-            <ul class="is-flex is-flex-direction-column" id="list"></ul>
-          </div>
-          <!--
+      <!--Contenedor inferior-->
+
+      <div class="container-form is-flex is-justify-content-start p-3">
+        <div>
+          <ul class="is-flex is-flex-direction-column" id="list"></ul>
+        </div>
+      </div>
+
+        <!--
           <div class="container-form is-flex is-justify-content-space-between p-3">
             <div>
               <p class="has-text-info tag is-info is-light">Servicios</p>
@@ -298,39 +303,39 @@
 
     <!--Sección Editar Categoría-->
 
-    <div class="container is-flex is-justify-content-center is-align-items-center mt-6 is-hidden">
-      <section class="section box container-editar p-4 is-flex is-flex-direction-column">
-        <h1 class="title is-2 has-text-weight-bold">Editar categoría</h1>
-        <div class="is-flex is-flex-direction-column ">
-        <div class="field input-nombre">
-          <label class="label">Nombre</label>
-          <div class="control">
-            <input class="input" type="text">
-          </div>
-        </div>
-        <div class="buttons p-3 pr-5 mr-6 mt-4 is-justify-content-right">
-          <button class="button has-background-light">Cancelar</button>
-          <button class="button is-info">Editar</button>
-        </div>
-        </div>
+        <div class="container is-flex is-justify-content-center is-align-items-center mt-6 is-hidden">
+          <section class="section box container-editar p-4 is-flex is-flex-direction-column">
+            <h1 class="title is-2 has-text-weight-bold">Editar categoría</h1>
+            <div class="is-flex is-flex-direction-column ">
+              <div class="field input-nombre">
+                <label class="label">Nombre</label>
+                <div class="control">
+                  <input class="input" type="text">
+                </div>
+              </div>
+              <div class="buttons p-3 pr-5 mr-6 mt-4 is-justify-content-right">
+                <button class="button has-background-light">Cancelar</button>
+                <button class="button is-info">Editar</button>
+              </div>
+            </div>
         </div>
 
-  <!-- Sección Reportes -->
-      <!--Sección Reportes-->
+        <!-- Sección Reportes -->
+        <!--Sección Reportes-->
 
-      <div class="container container-reportes is-flex is-justify-content-center is-align-items-center is-hidden" >
-      <section class="section container box-reportes box p-0 ">
-        <h1 class="title is-2 has-text-weight-bold p-3">Reportes</h1>
-        <figure class="is-flex is-justify-content-center">
-          <img src="img-reportes.png" width="380px" height="380px">
-        </figure>
-        <h4 class="title has-text-centered">Operaciones insuficientes</h4>
-        <p class="has-text-centered">Prueba agrgando más operaciones</p>
-      </section>
-    </div>
+        <div class="container container-reportes is-flex is-justify-content-center is-align-items-center is-hidden">
+          <section class="section container box-reportes box p-0 ">
+            <h1 class="title is-2 has-text-weight-bold p-3">Reportes</h1>
+            <figure class="is-flex is-justify-content-center">
+              <img src="img-reportes.png" width="380px" height="380px">
+            </figure>
+            <h4 class="title has-text-centered">Operaciones insuficientes</h4>
+            <p class="has-text-centered">Prueba agrgando más operaciones</p>
+          </section>
+        </div>
 
 
-  <script src="script.js"></script>
+        <script src="script.js"></script>
 </body>
 
 </html>

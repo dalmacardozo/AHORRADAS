@@ -184,21 +184,39 @@ const categoriesList = [];
 const addItem = () => {
    let newItem = $('#categoriesInput').value;
    categoriesList.push(newItem);
-   let liContent = document.createTextNode(`${newItem}`);
-   let liItem = document.createElement('li');
-   let deleteButton = document.createElement('button');
-   let editButton = document.createElement('button')
-   liItem.classList.add('has-text-info', 'tag', 'is-info', 'is-light', 'mt-4');
-   deleteButton.classList.add('button', 'is-ghost', 'is-size-7', 'ml-6');
-   deleteButton.innerText = "Eliminar";
-   editButton.classList.add('button', 'is-ghost', 'is-size-7');
-   editButton.innerText = "Editar";
-   liItem.appendChild(liContent);
-   liItem.appendChild(deleteButton);
-   liItem.appendChild(editButton)
-   $('#list').appendChild(liItem);
+   createList(categoriesList)
+   $('#categoriesForm').reset();
    console.log(categoriesList)
+}
+
+
+const createList = (lista) => {
+  $('#list').innerHTML = "";
+  lista.forEach((item) => {
+    let liContent = document.createTextNode(`${item}`);
+    let liItem = document.createElement('li');
+    let deleteButton = document.createElement('button');
+    let editButton = document.createElement('button')
+    liItem.classList.add('has-text-info', 'tag', 'is-info', 'is-light', 'mt-4');
+    editButton.classList.add('button', 'is-ghost', 'is-size-7', 'ml-6');
+    editButton.innerText = "Editar";
+    deleteButton.classList.add('button', 'is-ghost', 'is-size-7');
+    deleteButton.innerText = "Eliminar";
+    deleteButton.addEventListener('click', () => deleteItem(item))
+    liItem.appendChild(liContent);
+    liItem.appendChild(editButton);
+    liItem.appendChild(deleteButton);
+    $('#list').appendChild(liItem);
+  })
+}
+
+const deleteItem = (item) => {
+  const itemIndex = categoriesList.indexOf(item);
+  categoriesList.splice(itemIndex, 1);
+  createList(categoriesList)
+  console.log(categoriesList)
 }
 
 $('#addButton').addEventListener('click', addItem)
 
+//deleteButton.addEventListener('click', ()=> deleteItem(item))
