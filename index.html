@@ -215,8 +215,8 @@
             </div>
           </div>
           <div class="buttons">
-            <button class="button is-link is-light">Cancelar</button>
-            <button class="button is-primary" id="createOperationBtn">Agregar</button>
+            <button class="button is-light is-link">Cancelar</button>
+            <button class="button is-primary is-info" id="createOperationBtn">Agregar</button>
           </div>
           <div id="tableContainer"> </div>
         </section>
@@ -313,7 +313,7 @@
           </div>
         </div>
         <div class="buttons p-3 pr-5 mr-6 mt-4 is-justify-content-right">
-          <button class="button has-background-light">Cancelar</button>
+          <button class="button has-background-light is-link">Cancelar</button>
           <button class="button is-info">Editar</button>
         </div>
         </div>
@@ -323,17 +323,67 @@
       <!--Sección Reportes-->
 
       <div class="container container-reportes is-flex is-justify-content-center is-align-items-center is-hidden" >
-      <section class="section container box-reportes box p-0 ">
-        <h1 class="title is-2 has-text-weight-bold p-3">Reportes</h1>
-        <figure class="is-flex is-justify-content-center">
-          <img src="img-reportes.png" width="380px" height="380px">
-        </figure>
-        <h4 class="title has-text-centered">Operaciones insuficientes</h4>
-        <p class="has-text-centered">Prueba agrgando más operaciones</p>
-      </section>
-    </div>-
+        <section class="section container box-reportes box p-0 ">
+          <h1 class="title is-2 has-text-weight-bold p-3">Reportes</h1>
+          <figure class="is-flex is-justify-content-center">
+            <img src="img-reportes.png" width="380px" height="380px">
+          </figure>
+          <h4 class="title has-text-centered">Operaciones insuficientes</h4>
+          <p class="has-text-centered">Prueba agrgando más operaciones</p>
+        </section>
+      </div>
 
-
+    <!-- FORMULARIO EDITAR -->   
+   
+    
+    <form class="container is-flex is-justify-content-center is-align-items-center mt-6 ">
+      <div class="section container-newOperation is-flex is-flex-direction-column box is-hidden">
+        <h2 class="title is-2 has-text-weight-bold p-3">Editar Operación</h2>
+        <label for="editDescription">Descripción</label>
+        <div class="control">
+          <input class="input" type="text">
+        </div>
+        <div class="field">
+          <label class="label">Monto</label>
+          <div class="control">
+            <input class="input" value="0" type="number" id="amountOperation">
+          </div>
+        </div>
+        <label class="label">Tipo</label>
+        <div class="control">
+          <div class="select is-fullwidth">
+            <select>
+              <option>Todos</option>
+              <option>Gastos</option>
+              <option>Ganancias</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Categoría</label>
+          <div class="control">
+            <div class="select is-fullwidth">
+              <select id="selectCategoryOperation">
+                <option>Comidas</option>
+                <option>Servicios</option>
+                <option>Salidas</option>
+                <option>Educación</option>
+                <option>Transporte</option>
+                <option>Trabajo</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <label for="editDescription">Fecha</label>
+        <div class="control">
+          <input class="date" type="date">
+        </div>
+          <div class="is-flex is-justify-content-end">
+            <button class="button is-info is-light">Cancelar</button>
+            <button id="updateOperationBtn" class="button is-info">Editar</button>
+          </div>        
+      </div>
+    </form>
   <script src="script.js"></script>
 </body>
 
