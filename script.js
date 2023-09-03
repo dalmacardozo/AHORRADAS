@@ -119,6 +119,7 @@ const generateOperationTable = (operations) => {
               $${operation.amountOperation}
             </td>
             <td>
+                <button class="button is-small is-warning btnEdit" data-id="${operation.ids}">
                 <i class="fas fa-edit"></i>
               </button>
               <button class="button is-small is-danger btnDeleted" data-id="${operation.ids}">
