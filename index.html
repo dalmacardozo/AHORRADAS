@@ -335,24 +335,22 @@
 
     <!-- FORMULARIO EDITAR -->   
    
-    
-    <form class="container is-flex is-justify-content-center is-align-items-center mt-6 ">
-      <div class="section container-newOperation is-flex is-flex-direction-column box is-hidden">
+          <div class="section container-editOperation is-flex is-flex-direction-column box is-hidden">
         <h2 class="title is-2 has-text-weight-bold p-3">Editar Operación</h2>
-        <label for="editDescription">Descripción</label>
+        <label>Descripción</label>
         <div class="control">
-          <input class="input" type="text">
+          <input class="input" type="text" id="editDescriptionOperation">
         </div>
         <div class="field">
           <label class="label">Monto</label>
           <div class="control">
-            <input class="input" value="0" type="number" id="amountOperation">
+            <input class="input" value="0" type="number" id="editAmountOperation">
           </div>
         </div>
         <label class="label">Tipo</label>
         <div class="control">
           <div class="select is-fullwidth">
-            <select>
+            <select id="editTypeOperation">
               <option>Todos</option>
               <option>Gastos</option>
               <option>Ganancias</option>
@@ -363,7 +361,7 @@
           <label class="label">Categoría</label>
           <div class="control">
             <div class="select is-fullwidth">
-              <select id="selectCategoryOperation">
+              <select id="editCategoryOperation">
                 <option>Comidas</option>
                 <option>Servicios</option>
                 <option>Salidas</option>
@@ -374,16 +372,16 @@
             </div>
           </div>
         </div>
-        <label for="editDescription">Fecha</label>
+        <label>Fecha</label>
         <div class="control">
-          <input class="date" type="date">
+          <input class="date" type="date" id="editDateOperation">
         </div>
           <div class="is-flex is-justify-content-end">
-            <button class="button is-info is-light">Cancelar</button>
+            <button class="button is-info is-light" id="cancelEditBtn">Cancelar</button>
             <button id="updateOperationBtn" class="button is-info">Editar</button>
           </div>        
       </div>
-    </form>
+    
   <script src="script.js"></script>
 </body>
 
