@@ -3,17 +3,22 @@ const $$ = (selectors) => document.querySelectorAll(selectors);
 
 const filterContainer = $('.column-filter');
 const showfilters = $('#showFilters');
-const showFiltersButton = $('#showFilters')
+const showFiltersButton = $('#showFilters');
 const hideFiltersButton = $('#hideFilters');
-const categoriesSection = $('#categories')
-const reportesSection = $('#reports')
-const balanceSection = $('#balance')
-const categoriesContainer = $('.container-categorias')
+const categoriesSection = $('#categories');
+const reportesSection = $('#reports');
+const balanceSection = $('#balance');
+const categoriesContainer = $('.container-categorias');
 const balanceContainer = $('.column-balance');
 const reportesContainer = $('.container-reportes');
 const operationContainer = $('.column-operation');
 const newOperationButton = $('#newOperationBtn');
-const newOperationContainer = $('.container-newOperation')
+const newOperationContainer = $('.container-newOperation');
+const editOperationContainer = $('.container-editOperation');
+const editDescription = $("#editDescriptionOperation");
+const editAmount = $("#editAmountOperation");
+const editType = $("#editTypeOperation");
+const editCategory = $("#editCategoryOperation");
 
 // DOM FUNCTIONS
 const hideElement = (element) => element.classList.add('is-hidden');
@@ -23,35 +28,44 @@ const clear = (element) => element.innerHTML = "";
 hideFiltersButton.addEventListener('click', () => {
     hideElement(filterContainer);
     showElement(showfilters);
-})
+});
 
 showFiltersButton.addEventListener('click', () => {
     hideElement(showfilters);
     showElement(filterContainer);
-})
+});
 
 categoriesSection.addEventListener('click', () => {
     hideElement(balanceContainer);
     hideElement(operationContainer);
     hideElement(filterContainer);
     showElement(categoriesContainer);
-})
+});
 
 reportesSection.addEventListener('click', () => {
     hideElement(balanceContainer);
     hideElement(operationContainer);
     hideElement(filterContainer);
     showElement(reportesContainer);
-})
+});
 
 newOperationButton.addEventListener('click', () => {
     hideElement(filterContainer);
     hideElement(balanceContainer);
     hideElement(operationContainer);
     showElement(newOperationContainer);
-})
+});
 
-//LOCAL STORAGE
+editOperationContainer.addEventListener('click', () => {
+    hideElement(filterContainer);
+    hideElement(balanceContainer);
+    hideElement(operationContainer);
+    hideElement(newOperationContainer);
+    hideElement(tableContainer)
+    showElement(editOperationContainer);
+});
+
+// LOCAL STORAGE
 const getDataFromLocalStorage = (key) => JSON.parse(localStorage.getItem(key));
 const sendDataFromLocalStorage = (key, array) => localStorage.setItem(key, JSON.stringify(array));
 const removeDataFromLocalStorage = (key) => localStorage.removeItem(key);
@@ -63,18 +77,18 @@ let operations = getDataFromLocalStorage("operations")
     ? getDataFromLocalStorage("operations") : operationsDefault;
 
 if (!localStorage.getItem("operations")) {
-    sendDataFromLocalStorage("operations", operations)
+    sendDataFromLocalStorage("operations", operations);
 }
 
 const generateID = () => {
-    let length = 4
-    let characters = "0123456789"
-    let idObtained = ""
+    let length = 4;
+    let characters = "0123456789";
+    let idObtained = "";
     for (let i = 0, n = characters.length; i < length; ++i) {
         idObtained += characters.charAt(Math.floor(Math.random() * n));
     }
-    return idObtained
-}
+    return idObtained;
+};
 
 const operationContent = () => {
     const ids = parseInt(generateID());
@@ -119,6 +133,7 @@ const generateOperationTable = (operations) => {
               $${operation.amountOperation}
             </td>
             <td>
+                <button class="button is-small is-warning btnEdit" data-id="${operation.ids}">
                 <i class="fas fa-edit"></i>
               </button>
               <button class="button is-small is-danger btnDeleted" data-id="${operation.ids}">
@@ -136,25 +151,26 @@ const generateNewOperation = () => {
     if ($("#description").value === "") {
         return alert("Debe ingresar un nombre para la operación");
     } else {
-        clear(tableContainer);;
+        clear(tableContainer);
         operations.push(operationContent());
         $("#description").value = "";
         localStorage.setItem("operations", JSON.stringify(operations));
         generateOperationTable(JSON.parse(localStorage.getItem("operations")));
-    };
-}
+    }
+};
 
-$('#createOperationBtn').addEventListener('click', generateNewOperation)
+$('#createOperationBtn').addEventListener('click', generateNewOperation);
 
+//DELETE
 const tableContainer = $("#tableContainer");
 tableContainer.addEventListener("click", (e) => {
-    if (e.target.classList.contains("btnDeleted")) {
+     if (e.target.classList.contains("btnDeleted")) {
         e.stopPropagation();
         const operationId = e.target.getAttribute("data-id");
         deleteOperation(operationId);
         deleteOperationFromTable(operationId);
-    }
-});
+        }
+    });
 
 const deleteOperation = (operationId) => {
     clear(tableContainer);
@@ -170,7 +186,7 @@ const deleteOperation = (operationId) => {
 const deleteOperationFromTable = (operationId) => {
     const btnDeleted = $(`.btnDeleted[data-id="${operationId}"]`);
     if (btnDeleted) {
-        const tableRow = btnDeleted.closest("tr");
+        const tableRow = btnDeleted("tr");
         if (tableRow) {
             tableRow.remove();
         }
@@ -218,4 +234,28 @@ const deleteItem = (item) => {
 }
 
 $('#addButton').addEventListener('click', addItem)
+
+//EDIT
+const getOperationById = (operationId) => {
+    return operations.find((operation) => operation.ids === parseInt(operationId));
+    };
+
+tableContainer.addEventListener("click", (e) => {
+    if (e.target.classList.contains("btnEdit")) {
+        e.stopPropagation();
+        const operationId = e.target.getAttribute("data-id");
+        const operationToEdit = getOperationById(operationId);
+        fillEditForm(operationToEdit);
+    }
+});
+
+const fillEditForm = (operation) => {
+    editDescription.value = operation.descriptionOperation;
+    editAmount.value = operation.amountOperation;
+    editType.value = operation.operationType;
+    editCategory.value = operation.selectCategoryOperation;
+    showElement(editOperationContainer);
+    hideElement(newOperationContainer)
+    hideElement(tableContainer)
+};
 
