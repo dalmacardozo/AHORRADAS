@@ -245,7 +245,7 @@
         
         <!--Contenedor inferior-->
 
-        <div class="container-form is-flex is-justify-content-space-between p-3 " >
+        <div class="container-form is-flex is-justify-content-space-between p-3" >
             <ul id="list" class="is-flex is-flex-direction-column"></ul>
           </div>
       </section>
@@ -253,19 +253,21 @@
 
     <!--Sección Editar Categoría-->
 
-    <div class="container is-flex is-justify-content-center is-align-items-center mt-6 is-hidden">
-      <section class="section box container-editar p-4 is-flex is-flex-direction-column">
-        <h1 class="title is-2 has-text-weight-bold">Editar categoría</h1>
-        <div class="is-flex is-flex-direction-column ">
+    <div class="container is-flex is-justify-content-center is-align-items-center " >
+      <section class="section box-editar-categoria box p-4">
+        <h1 class="title is-2 has-text-weight-bold">Editar Categoría</h1>
+        <div class="container-form is-flex  is-justify-content-end is-flex-direction-column">
         <div class="field input-nombre">
           <label class="label">Nombre</label>
           <div class="control">
-            <input class="input" type="text">
+            <form id="categoriesForm">
+            <input class="input" type="text" id="categoriesInput">
           </div>
         </div>
-        <div class="buttons p-3 pr-5 mr-6 mt-4 is-justify-content-right">
-          <button class="button has-background-light">Cancelar</button>
-          <button class="button is-info">Editar</button>
+        <div class="buttons p-3 mt-4">
+          <button class="button is-info" id="addButton" type="button">Editar</button>
+          <button class="button is-info" id="cancelarButton" type="button">Cancelar</button>
+        </form>
         </div>
         </div>
         </div>
@@ -282,7 +284,7 @@
         <h4 class="title has-text-centered">Operaciones insuficientes</h4>
         <p class="has-text-centered">Prueba agrgando más operaciones</p>
       </section>
-    </div>-
+    </div>
 
     <!-- FORMULARIO EDITAR -->   
    
