@@ -233,70 +233,21 @@
         <div class="field input-nombre">
           <label class="label">Nombre</label>
           <div class="control">
-            <input class="input" type="text">
+            <form id="categoriesForm">
+            <input class="input" type="text" id="categoriesInput">
           </div>
         </div>
         <div class="buttons p-3 mt-4">
-          <button class="button is-info">Agregar</button>
+          <button class="button is-info" id="addButton" type="button">Agregar</button>
+        </form>
         </div>
         </div>
         
         <!--Contenedor inferior-->
 
-        <div class="container-form is-flex is-justify-content-space-between p-3 is-hidden">
-          <div>
-            <p class="has-text-info tag is-info is-light mt-4">Comida</p>
+        <div class="container-form is-flex is-justify-content-space-between p-3 " >
+            <ul id="list" class="is-flex is-flex-direction-column"></ul>
           </div>
-          <div class="buttons">
-            <button class="button is-ghost is-size-7 mt-4">Editar</button>
-            <button class="button is-ghost is-size-7 mt-4">Eliminar</button>
-          </div>
-          </div>
-          <div class="container-form is-flex is-justify-content-space-between p-3">
-            <div>
-              <p class="has-text-info tag is-info is-light">Servicios</p>
-            </div>
-            <div class="buttons">
-              <button class="button is-ghost is-size-7">Editar</button>
-              <button class="button is-ghost is-size-7">Eliminar</button>
-            </div>
-            </div>
-            <div class="container-form is-flex is-justify-content-space-between p-3">
-              <div>
-                <p class="has-text-info tag is-info is-light">Salidas</p>
-              </div>
-              <div class="buttons">
-                <button class="button is-ghost is-size-7">Editar</button>
-                <button class="button is-ghost is-size-7">Eliminar</button>
-              </div>
-              </div>
-              <div class="container-form is-flex is-justify-content-space-between p-3">
-                <div>
-                  <p class="has-text-info tag is-info is-light">Educación</p>
-                </div>
-                <div class="buttons">
-                  <button class="button is-ghost is-size-7">Editar</button>
-                  <button class="button is-ghost is-size-7">Eliminar</button>
-                </div>
-                </div>
-                <div class="container-form is-flex is-justify-content-space-between p-3">
-                  <div>
-                    <p class="has-text-info tag is-info is-light">Transporte</p>
-                  </div>
-                  <div class="buttons">
-                    <button class="button is-ghost is-size-7">Editar</button>
-                    <button class="button is-ghost is-size-7">Eliminar</button>
-                  </div>
-                  </div>
-                  <div class="container-form is-flex is-justify-content-space-between p-3">
-                    <div>
-                      <p class="has-text-info tag is-info is-light">Trabajo</p>
-                    </div>
-                    <div class="buttons">
-                      <button class="button is-ghost is-size-7">Editar</button>
-                      <button class="button is-ghost is-size-7">Eliminar</button>
-                    </div>
-                    </div>
       </section>
     </div>
 
