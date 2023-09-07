@@ -202,7 +202,6 @@ const addItem = () => {
    categoriesList.push(newItem);
    createList(categoriesList)
    $('#categoriesForm').reset();
-   console.log(categoriesList)
 }
 
 
@@ -216,6 +215,7 @@ const createList = (lista) => {
     liItem.classList.add('has-text-info', 'tag', 'is-info', 'is-light', 'mt-4');
     editButton.classList.add('button', 'is-ghost', 'is-size-7', 'ml-6');
     editButton.innerText = "Editar";
+    editButton.addEventListener('click', () => editItem(item));
     deleteButton.classList.add('button', 'is-ghost', 'is-size-7');
     deleteButton.innerText = "Eliminar";
     deleteButton.addEventListener('click', () => deleteItem(item))
@@ -226,12 +226,21 @@ const createList = (lista) => {
   })
 }
 
+const editItem = (item) => {
+  const newItem = prompt('cambio');
+  const itemIndex = categoriesList.indexOf(item);
+  categoriesList[itemIndex] = newItem
+  console.log(categoriesList)
+}
+
+
 const deleteItem = (item) => {
   const itemIndex = categoriesList.indexOf(item);
   categoriesList.splice(itemIndex, 1);
-  createList(categoriesList)
-  console.log(categoriesList)
+  createList(categoriesList);
 }
+
+
 
 $('#addButton').addEventListener('click', addItem)
 
