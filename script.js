@@ -227,10 +227,12 @@ const createList = (lista) => {
 }
 
 const editItem = (item) => {
-  const newItem = prompt('cambio');
-  const itemIndex = categoriesList.indexOf(item);
-  categoriesList[itemIndex] = newItem
-  console.log(categoriesList)
+  $('.container-editar-categoria').classList.remove('is-hidden');
+  $('.container-categorias').classList.add('is-hidden')
+ // const newItem = $('#categoriesEditInput').innerText;
+  //const itemIndex = categoriesList.indexOf(item);
+  //categoriesList[itemIndex] = newItem
+  //console.log(categoriesList)
 }
 
 
