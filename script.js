@@ -219,4 +219,3 @@ const deleteItem = (item) => {
 
 $('#addButton').addEventListener('click', addItem)
 
-//deleteButton.addEventListener('click', ()=> deleteItem(item))
