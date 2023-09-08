@@ -226,7 +226,6 @@ let categoria = [{
 sendDataFromLocalStorage('categorias', categoria);
 
 const listaCategorias = (categoria) => {
-  console.log(categoria);
   $('#categorias').innerHTML = "";
   for (let { nombre, id } of categoria) {
     $('#categorias').innerHTML += `<li class="is-flex is-justify-content-space-between">
@@ -246,12 +245,12 @@ console.log(categoria)
 
 //const categoriesList = [];
 
-//const addItem = () => {
-//let newItem = $('#categoriesInput').value;
-//categoriesList.push(newItem);
-//createList(categoriesList)
-//$('#categoriesForm').reset();
-//}
+const addItem = () => {
+  let newItem = `nombre:${$('#categoriesInput').value}, id:${randomId()}`;
+  categoria.push(newItem)
+
+  $('#categoriesForm').reset();
+  }
 
 
 //const createList = (lista) => {
@@ -299,7 +298,7 @@ $$('.edit-btn').forEach((btn) => {
 //}
 
 
-//$('#addButton').addEventListener('click', addItem)
+$('#addButton').addEventListener('click', addItem)
 //$('#modifyButton').addEventListener('click', modificarItem)
 //$('#cancelarButton').addEventListener('click')
 
