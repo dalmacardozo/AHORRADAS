@@ -243,6 +243,7 @@ const listaCategorias = (categoria) => {
 listaCategorias(categoria)
 console.log(categoria)
 
+
 //const categoriesList = [];
 
 //const addItem = () => {
@@ -274,10 +275,13 @@ console.log(categoria)
 //})
 //}
 
-//const editItem = (item) => {
-  //$('.container-editar-categoria').classList.remove('is-hidden');
-  //$('.container-categorias').classList.add('is-hidden')
-//}
+const editItem = () => {
+  showElement($('.container-editar-categoria'));
+  hideElement($('.container-categorias'));
+}
+
+$$('.edit-btn').forEach((btn) => {
+  btn.addEventListener('click', () => editItem())})
 
 //const modificarItem = (item) => {
 //let newElement = $('#categoriesEditInput').value;
