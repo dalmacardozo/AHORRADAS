@@ -247,6 +247,12 @@ const listaCategorias = (categorias) => {
 
 listaCategorias(categorias)
 
+//LOCASSTORAGE
+sendDataFromLocalStorage('categories', categorias)
+
+
+
+
 //BOTON AGREGAR EN CATEGORIAS
 
 const newCategoria = () => {
@@ -262,6 +268,7 @@ $('#addButton').addEventListener('click', ()=> newCategoria(listaCategorias(cate
 $('#addButton').addEventListener('click', ()=> listaCategorias(categorias))
 
 //BOTON ELIMINAR EN CATEGORÍAS
+
 const removerCategoria = () => {
   let categoriaEliminada = categorias.filter((categoria)  => categoria.id === id);
   console.log(categoriaEliminada)
@@ -277,7 +284,6 @@ const mostrarCategoria = (id) => {
   $('#categoriesEditInput').value = categoriaAEditar[0].nombre;
   $('#modifyButton').addEventListener('click', ()=> editarCategoria(categoriaAEditar[0].id))
 }
-
 
 
 const editarCategoria = (id) => {
