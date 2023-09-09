@@ -225,6 +225,7 @@ let categoria = [{
 
 sendDataFromLocalStorage('categorias', categoria);
 
+
 const listaCategorias = (categoria) => {
   $('#categorias').innerHTML = "";
   for (let { nombre, id } of categoria) {
