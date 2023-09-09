@@ -248,7 +248,10 @@ const listaCategorias = (categorias) => {
 listaCategorias(categorias)
 
 //LOCASSTORAGE
-sendDataFromLocalStorage('categories', categorias)
+const actualizarCategorias = (datos) => {
+sendDataFromLocalStorage('categories', datos)}
+
+actualizarCategorias(categorias)
 
 
 
@@ -262,6 +265,7 @@ const newCategoria = () => {
   }; 
   categorias.push(newCategory);
   console.log(categorias)
+  actualizarCategorias(categorias);
 }
 
 $('#addButton').addEventListener('click', ()=> newCategoria(listaCategorias(categorias)))
