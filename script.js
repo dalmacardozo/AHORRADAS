@@ -251,16 +251,16 @@ listaCategorias(categorias)
 
 //BOTON AGREGAR EN CATEGORIAS
 
-const newCategoria = (categoria) => {
+const newCategoria = () => {
   let newCategory = {
     nombre: $('#categoriesInput').value,
     id: randomId(),
   }; 
-  console.log(categorias.push(newCategory))
+  categorias.push(newCategory);
   console.log(categorias)
 }
 
-$('#addButton').addEventListener('click', ()=> newCategoria())
+$('#addButton').addEventListener('click', ()=> newCategoria(listaCategorias(categorias)))
 
 //BOTON EDITAR EN LISTA DE CATEGORIAS
 
