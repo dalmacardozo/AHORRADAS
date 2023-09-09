@@ -262,9 +262,9 @@ $('#addButton').addEventListener('click', ()=> newCategoria(listaCategorias(cate
 $('#addButton').addEventListener('click', ()=> listaCategorias(categorias))
 
 //BOTON ELIMINAR EN CATEGORÍAS
-const removerCategoria = (categoria) => {
+const removerCategoria = () => {
   let categoriaEliminada = categorias.filter((categoria)  => categoria.id === id);
-  
+  console.log(categoriaEliminada)
 }
 
 //BOTON EDITAR EN LISTA DE CATEGORIAS
