@@ -199,7 +199,15 @@ const deleteOperationFromTable = (operationId) => {
 
 
 
-let categoria = [{
+//const traerCategorias = () => {
+  //return getDataFromLocalStorage("categorias");
+//};
+
+//const subirCategorias = () => {
+  //return sendDataFromLocalStorage("categorias", categorias)
+//}
+
+let categorias = [{
   nombre: "Comida",
   id: randomId(),
 },
@@ -225,12 +233,10 @@ let categoria = [{
 },
 ]
 
-sendDataFromLocalStorage('categorias', categoria);
 
-
-const listaCategorias = (categoria) => {
+const listaCategorias = (categorias) => {
   $('#categorias').innerHTML = "";
-  for (let { nombre, id } of categoria) {
+  for (let { nombre, id } of categorias) {
     $('#categorias').innerHTML += `<li class="is-flex is-justify-content-space-between has-text-info is-info is-light mt-4">
     <p>${nombre}</p>
     <div>
@@ -241,7 +247,7 @@ const listaCategorias = (categoria) => {
   }
 };
 
-listaCategorias(categoria)
+listaCategorias(categorias)
 
 //BOTON AGREGAR EN CATEGORIAS
 
@@ -260,16 +266,28 @@ $('#addButton').addEventListener('click', ()=> newCategoria())
 const mostrarCategoria = (id) => {
   showElement($('.container-editar-categoria'));
   hideElement($('.container-categorias'));
-  let categoriaAEditar = categoria.filter((categoria) => categoria.id === id);
+  let categoriaAEditar = categorias.filter((categoria) => categoria.id === id);
   console.log(categoriaAEditar[0])
   $('#categoriesEditInput').value = categoriaAEditar[0].nombre;
+  $('#modifyButton').addEventListener('click', ()=> editarCategoria(categoriaAEditar[0].id))
 }
 
 
+const editarCategoria = (id) => {
+  let nuevaCategoria = {
+    id: id,
+    nombre: $('#categoriesEditInput').value,
+  };
+  let categoriasActualizadas = categorias.map((categoria) =>
+    categoria.id === id ? { ...nuevaCategoria } : categoria
+  )
+  
+  console.log(listaCategorias(categoriasActualizadas));
+};
+//(listaCategorias(categoriasActualizadas))
 //EDITAR EN VISTA EDITAR-CATEGORIA
 
 
-$('#modifyButton')
 
 
 //const categoriesList = [];
