@@ -1,5 +1,6 @@
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selectors) => document.querySelectorAll(selectors);
+const randomId = () => self.crypto.randomUUID();
 
 const filterContainer = $('.column-filter');
 const showfilters = $('#showFilters');
@@ -162,6 +163,7 @@ const generateNewOperation = () => {
 $('#createOperationBtn').addEventListener('click', generateNewOperation);
 
 //DELETE
+
 const tableContainer = $("#tableContainer");
 tableContainer.addEventListener("click", (e) => {
   if (e.target.classList.contains("btnDeleted")) {
@@ -195,7 +197,7 @@ const deleteOperationFromTable = (operationId) => {
 
 //CATEGORIESFUNCTIONS
 
-const randomId = () => self.crypto.randomUUID();
+
 
 let categoria = [{
   nombre: "Comida",
@@ -232,12 +234,14 @@ const listaCategorias = (categoria) => {
     $('#categorias').innerHTML += `<li class="is-flex is-justify-content-space-between has-text-info is-info is-light mt-4">
     <p>${nombre}</p>
     <div>
-      <button onclick="showEditCategory('${id}')" id="${id}" class="edit-btn button is-ghost is-size-7 ml-6">Editar</button>
+      <button onclick="mostrarCategoria('${id}')" id="${id}" class="edit-btn button is-ghost is-size-7 ml-6">Editar</button>
       <button onclick="removeCategory('${id}')" id="${id}" class="button is-ghost is-size-7">Eliminar</button>
     </div>
     </li>`;
   }
 };
+
+listaCategorias(categoria)
 
 //BOTON AGREGAR EN CATEGORIAS
 
@@ -251,18 +255,24 @@ const newCategoria = (categoria) => {
 
 $('#addButton').addEventListener('click', ()=> newCategoria())
 
-listaCategorias(categoria)
+//BOTON EDITAR EN LISTA DE CATEGORIAS
 
+const mostrarCategoria = (id) => {
+  showElement($('.container-editar-categoria'));
+  hideElement($('.container-categorias'));
+  let categoriaAEditar = categoria.filter((categoria) => categoria.id === id);
+  console.log(categoriaAEditar[0])
+  $('#categoriesEditInput').value = categoriaAEditar[0].nombre;
+}
+
+
+//EDITAR EN VISTA EDITAR-CATEGORIA
+
+
+$('#modifyButton')
 
 
 //const categoriesList = [];
-
-const addItem = () => {
-  let newItem = `nombre:${$('#categoriesInput').value}, id:${randomId()}`;
-  categoria.push(newItem)
-
-  $('#categoriesForm').reset();
-  }
 
 
 //const createList = (lista) => {
@@ -286,13 +296,8 @@ const addItem = () => {
 //})
 //}
 
-const editItem = () => {
-  showElement($('.container-editar-categoria'));
-  hideElement($('.container-categorias'));
-}
 
-$$('.edit-btn').forEach((btn) => {
-  btn.addEventListener('click', () => editItem())})
+
 
 //const modificarItem = (item) => {
 //let newElement = $('#categoriesEditInput').value;
