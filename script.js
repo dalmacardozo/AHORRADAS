@@ -255,8 +255,9 @@ const newCategoria = (categoria) => {
   let newCategory = {
     nombre: $('#categoriesInput').value,
     id: randomId(),
-  }
-  console.log(newCategory)
+  }; 
+  console.log(categorias.push(newCategory))
+  console.log(categorias)
 }
 
 $('#addButton').addEventListener('click', ()=> newCategoria())
