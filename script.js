@@ -197,8 +197,6 @@ const deleteOperationFromTable = (operationId) => {
 
 //CATEGORIESFUNCTIONS
 
-
-
 //const traerCategorias = () => {
   //return getDataFromLocalStorage("categorias");
 //};
@@ -241,7 +239,7 @@ const listaCategorias = (categorias) => {
     <p>${nombre}</p>
     <div>
       <button onclick="mostrarCategoria('${id}')" id="${id}" class="edit-btn button is-ghost is-size-7 ml-6">Editar</button>
-      <button onclick="removeCategory('${id}')" id="${id}" class="button is-ghost is-size-7">Eliminar</button>
+      <button onclick="removerCategoria('${id}')" id="${id}" class="button is-ghost is-size-7">Eliminar</button>
     </div>
     </li>`;
   }
@@ -263,6 +261,12 @@ const newCategoria = () => {
 $('#addButton').addEventListener('click', ()=> newCategoria(listaCategorias(categorias)))
 $('#addButton').addEventListener('click', ()=> listaCategorias(categorias))
 
+//BOTON ELIMINAR EN CATEGORÍAS
+const removerCategoria = (categoria) => {
+  let categoriaEliminada = categorias.filter((categoria)  => categoria.id === id);
+  
+}
+
 //BOTON EDITAR EN LISTA DE CATEGORIAS
 
 const mostrarCategoria = (id) => {
@@ -273,6 +277,7 @@ const mostrarCategoria = (id) => {
   $('#categoriesEditInput').value = categoriaAEditar[0].nombre;
   $('#modifyButton').addEventListener('click', ()=> editarCategoria(categoriaAEditar[0].id))
 }
+
 
 
 const editarCategoria = (id) => {
@@ -286,6 +291,7 @@ const editarCategoria = (id) => {
   
   console.log(listaCategorias(categoriasActualizadas));
 };
+
 //(listaCategorias(categoriasActualizadas))
 //EDITAR EN VISTA EDITAR-CATEGORIA
 
