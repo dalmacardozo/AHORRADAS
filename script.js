@@ -261,6 +261,7 @@ const newCategoria = () => {
 }
 
 $('#addButton').addEventListener('click', ()=> newCategoria(listaCategorias(categorias)))
+$('#addButton').addEventListener('click', ()=> listaCategorias(categorias))
 
 //BOTON EDITAR EN LISTA DE CATEGORIAS
 
