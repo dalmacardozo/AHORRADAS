@@ -238,9 +238,20 @@ const listaCategorias = (categoria) => {
   }
 };
 
+//BOTON AGREGAR EN CATEGORIAS
+
+const newCategoria = (categoria) => {
+  let newCategory = {
+    nombre: $('#categoriesInput').value,
+    id: randomId(),
+  }
+  console.log(newCategory)
+}
+
+$('#addButton').addEventListener('click', ()=> newCategoria())
 
 listaCategorias(categoria)
-console.log(categoria)
+
 
 
 //const categoriesList = [];
@@ -298,7 +309,7 @@ $$('.edit-btn').forEach((btn) => {
 //}
 
 
-$('#addButton').addEventListener('click', addItem)
+//$('#addButton').addEventListener('click', addItem)
 //$('#modifyButton').addEventListener('click', modificarItem)
 //$('#cancelarButton').addEventListener('click')
 
