@@ -198,27 +198,27 @@ const deleteOperationFromTable = (operationId) => {
 const randomId = () => self.crypto.randomUUID();
 
 let categoria = [{
-  nombre: "comida",
+  nombre: "Comida",
   id: randomId(),
 },
 {
-  nombre: "servicios",
+  nombre: "Servicios",
   id: randomId(),
 },
 {
-  nombre: "salidas",
+  nombre: "Salidas",
   id: randomId(),
 },
 {
-  nombre: "transporte",
+  nombre: "Transporte",
   id: randomId(),
 },
 {
-  nombre: "educación",
+  nombre: "Educación",
   id: randomId(),
 },
 {
-  nombre: "trabajo",
+  nombre: "Trabajo",
   id: randomId(),
 },
 ]
@@ -229,11 +229,11 @@ sendDataFromLocalStorage('categorias', categoria);
 const listaCategorias = (categoria) => {
   $('#categorias').innerHTML = "";
   for (let { nombre, id } of categoria) {
-    $('#categorias').innerHTML += `<li class="is-flex is-justify-content-space-between">
+    $('#categorias').innerHTML += `<li class="is-flex is-justify-content-space-between has-text-info is-info is-light mt-4">
     <p>${nombre}</p>
     <div>
-      <button onclick="showEditCategory('${id}')" id="${id}" class="is-primary edit-btn">Editar</button>
-      <button onclick="removeCategory('${id}')" id="${id}" class="is-primary">Eliminar</button>
+      <button onclick="showEditCategory('${id}')" id="${id}" class="edit-btn button is-ghost is-size-7 ml-6">Editar</button>
+      <button onclick="removeCategory('${id}')" id="${id}" class="button is-ghost is-size-7">Eliminar</button>
     </div>
     </li>`;
   }
