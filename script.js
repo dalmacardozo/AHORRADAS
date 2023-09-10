@@ -198,11 +198,11 @@ const deleteOperationFromTable = (operationId) => {
 //CATEGORIESFUNCTIONS
 
 //const traerCategorias = () => {
-  //return getDataFromLocalStorage("categorias");
+//return getDataFromLocalStorage("categorias");
 //};
 
 //const subirCategorias = () => {
-  //return sendDataFromLocalStorage("categorias", categorias)
+//return sendDataFromLocalStorage("categorias", categorias)
 //}
 
 let categorias = [{
@@ -248,12 +248,19 @@ const listaCategorias = (categorias) => {
 listaCategorias(categorias)
 
 //LOCASSTORAGE
+//Actualizar - Lo que subo
+
 const actualizarCategorias = (datos) => {
-sendDataFromLocalStorage('categories', datos)}
+  sendDataFromLocalStorage('categories', datos)
+}
 
 actualizarCategorias(categorias)
 
+const traerCategorias = () => {
+  getDataFromLocalStorage('categories')
+}
 
+traerCategorias()
 
 
 //BOTON AGREGAR EN CATEGORIAS
@@ -262,21 +269,26 @@ const newCategoria = () => {
   let newCategory = {
     nombre: $('#categoriesInput').value,
     id: randomId(),
-  }; 
+  };
   categorias.push(newCategory);
   console.log(categorias)
   actualizarCategorias(categorias);
 }
 
-$('#addButton').addEventListener('click', ()=> newCategoria(listaCategorias(categorias)))
-$('#addButton').addEventListener('click', ()=> listaCategorias(categorias))
+$('#addButton').addEventListener('click', () => newCategoria(listaCategorias(categorias)))
+$('#addButton').addEventListener('click', () => listaCategorias(categorias))
 
 //BOTON ELIMINAR EN CATEGORÍAS
 
 const removerCategoria = () => {
-  let categoriaEliminada = categorias.filter((categoria)  => categoria.id === id);
-  console.log(categoriaEliminada)
+  let datosActualizados = getDataFromLocalStorage('categories');
+  
+
+  //let categoriaEliminada = categorias.filter((categoria) => categoria.id === id);
+  console.log(datosActualizados)
 }
+ 
+removerCategoria()
 
 //BOTON EDITAR EN LISTA DE CATEGORIAS
 
@@ -286,7 +298,7 @@ const mostrarCategoria = (id) => {
   let categoriaAEditar = categorias.filter((categoria) => categoria.id === id);
   console.log(categoriaAEditar[0])
   $('#categoriesEditInput').value = categoriaAEditar[0].nombre;
-  $('#modifyButton').addEventListener('click', ()=> editarCategoria(categoriaAEditar[0].id))
+  $('#modifyButton').addEventListener('click', () => editarCategoria(categoriaAEditar[0].id))
 }
 
 
@@ -298,7 +310,7 @@ const editarCategoria = (id) => {
   let categoriasActualizadas = categorias.map((categoria) =>
     categoria.id === id ? { ...nuevaCategoria } : categoria
   )
-  
+
   console.log(listaCategorias(categoriasActualizadas));
 };
 
