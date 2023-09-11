@@ -197,14 +197,6 @@ const deleteOperationFromTable = (operationId) => {
 
 //CATEGORIESFUNCTIONS
 
-//const traerCategorias = () => {
-//return getDataFromLocalStorage("categorias");
-//};
-
-//const subirCategorias = () => {
-//return sendDataFromLocalStorage("categorias", categorias)
-//}
-
 let categorias = [{
   nombre: "Comida",
   id: randomId(),
@@ -231,8 +223,8 @@ let categorias = [{
 },
 ]
 
-
-const listaCategorias = (categorias) => {
+console.log(categorias)
+const listaCategorias = () => {
   $('#categorias').innerHTML = "";
   for (let { nombre, id } of categorias) {
     $('#categorias').innerHTML += `<li class="is-flex is-justify-content-space-between has-text-info is-info is-light mt-4">
@@ -256,6 +248,8 @@ const actualizarCategorias = (datos) => {
 
 actualizarCategorias(categorias)
 
+//Traer - Lo que ya está en el local
+
 const traerCategorias = () => {
   getDataFromLocalStorage('categories')
 }
@@ -265,30 +259,33 @@ traerCategorias()
 
 //BOTON AGREGAR EN CATEGORIAS
 
-const newCategoria = () => {
-  let newCategory = {
+const nuevaCategoria = () => {
+  let categoriaAgregada = {
     nombre: $('#categoriesInput').value,
     id: randomId(),
   };
-  categorias.push(newCategory);
+  categorias.push(categoriaAgregada);
+  //let newArr = [...categorias, categoriaAgregada]
+  actualizarCategorias(categorias)
   console.log(categorias)
-  actualizarCategorias(categorias);
+  //console.log(newArr)
 }
 
-$('#addButton').addEventListener('click', () => newCategoria(listaCategorias(categorias)))
+
+$('#addButton').addEventListener('click', () => nuevaCategoria(listaCategorias(categorias)))
 $('#addButton').addEventListener('click', () => listaCategorias(categorias))
 
 //BOTON ELIMINAR EN CATEGORÍAS
 
-const removerCategoria = () => {
-  let datosActualizados = getDataFromLocalStorage('categories');
+const removerCategoria = (id) => {
+  //let datosActualizados = traerCategorias();
+  //let categoriaAEliminar = categorias.filter((categoria) => categoria.id === id);
+  //let categoriaEliminada = categoriaAEliminar[0].splice(id, 1);
   
-
-  //let categoriaEliminada = categorias.filter((categoria) => categoria.id === id);
-  console.log(datosActualizados)
+  
 }
- 
-removerCategoria()
+//categoriaEliminada
+//removerCategoria(categorias)
 
 //BOTON EDITAR EN LISTA DE CATEGORIAS
 
