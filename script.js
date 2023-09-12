@@ -197,7 +197,15 @@ const deleteOperationFromTable = (operationId) => {
 
 //CATEGORIESFUNCTIONS
 
-let categorias = [{
+//Traer - Lo que ya está en el local
+
+const traerCategorias = () => {
+  return getDataFromLocalStorage('categories')
+}
+
+console.log(traerCategorias())
+
+let categorias = traerCategorias() || [{
   nombre: "Comida",
   id: randomId(),
 },
@@ -244,18 +252,12 @@ listaCategorias(categorias)
 //Actualizar - Lo que subo
 
 const actualizarCategorias = (datos) => {
-  sendDataFromLocalStorage('categories', datos)
+  return sendDataFromLocalStorage('categories', datos)
 }
 
 actualizarCategorias(categorias)
 
-//Traer - Lo que ya está en el local
 
-const traerCategorias = () => {
-  getDataFromLocalStorage('categories')
-}
-
-traerCategorias()
 
 
 //BOTON AGREGAR EN CATEGORIAS
@@ -268,7 +270,7 @@ const nuevaCategoria = () => {
   categorias.push(categoriaAgregada);
   //let newArr = [...categorias, categoriaAgregada]
   actualizarCategorias(categorias)
-  //console.log(categorias)
+  console.log(categorias)
   //console.log(newArr)
 }
 
@@ -314,15 +316,20 @@ const editarCategoria = (id) => {
 
 //COMPLETARSELECTS
 
-const completarSelects = (categorias) => {
-  let selects = $$('.completar-selects');
+const completarSelects = (categories) => {
+  for (let {nombre, id} of categories) {
+    console.log(nombre, id)
+  }
+ 
   
-  console.log(selects)
+  console.log()
 }
 
-completarSelects()
+completarSelects(categorias)
 
-
+ //let selects = $$('.completar-selects').forEach((select) => {
+   // categorias.forEach()
+  //} )
 
 
 //const categoriesList = [];
