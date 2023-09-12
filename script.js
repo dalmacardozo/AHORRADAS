@@ -231,6 +231,7 @@ let categorias = traerCategorias() || [{
 },
 ]
 
+
 //console.log(categorias)
 
 const listaCategorias = () => {
@@ -258,8 +259,6 @@ const actualizarCategorias = (datos) => {
 actualizarCategorias(categorias)
 
 
-
-
 //BOTON AGREGAR EN CATEGORIAS
 
 const nuevaCategoria = () => {
@@ -277,6 +276,7 @@ const nuevaCategoria = () => {
 
 $('#addButton').addEventListener('click', () => nuevaCategoria(listaCategorias(categorias)))
 $('#addButton').addEventListener('click', () => listaCategorias(categorias))
+
 
 //BOTON ELIMINAR EN CATEGORÍAS
 
@@ -317,17 +317,17 @@ const editarCategoria = (id) => {
 //COMPLETARSELECTS
 
 const completarSelects = (categories) => {
-  for (let {nombre, id} of categories) {
-    console.log(nombre, id)
+  $$('.completar-selects').forEach(select => {
+    for (let {nombre, id} of categories) {
+    select.innerHTML += `<option value="${id}">${nombre}</option>`
   }
- 
+  });
   
-  console.log()
 }
 
 completarSelects(categorias)
 
- //let selects = $$('.completar-selects').forEach((select) => {
+ //let selects = .forEach((select) => {
    // categorias.forEach()
   //} )
 
