@@ -223,7 +223,8 @@ let categorias = [{
 },
 ]
 
-console.log(categorias)
+//console.log(categorias)
+
 const listaCategorias = () => {
   $('#categorias').innerHTML = "";
   for (let { nombre, id } of categorias) {
@@ -267,7 +268,7 @@ const nuevaCategoria = () => {
   categorias.push(categoriaAgregada);
   //let newArr = [...categorias, categoriaAgregada]
   actualizarCategorias(categorias)
-  console.log(categorias)
+  //console.log(categorias)
   //console.log(newArr)
 }
 
@@ -308,11 +309,18 @@ const editarCategoria = (id) => {
     categoria.id === id ? { ...nuevaCategoria } : categoria
   )
 
-  console.log(listaCategorias(categoriasActualizadas));
+  //console.log(listaCategorias(categoriasActualizadas));
 };
 
-//(listaCategorias(categoriasActualizadas))
-//EDITAR EN VISTA EDITAR-CATEGORIA
+//COMPLETARSELECTS
+
+const completarSelects = (categorias) => {
+  let selects = $$('.completar-selects');
+  
+  console.log(selects)
+}
+
+completarSelects()
 
 
 
