@@ -199,6 +199,7 @@ const deleteOperationFromTable = (operationId) => {
 
 //Traer - Lo que ya está en el local
 
+
 const traerCategorias = () => {
   return getDataFromLocalStorage('categories')
 }
@@ -257,7 +258,6 @@ const actualizarCategorias = (datos) => {
 }
 
 actualizarCategorias(categorias)
-
 
 //BOTON AGREGAR EN CATEGORIAS
 
@@ -327,57 +327,9 @@ const completarSelects = (categories) => {
 
 completarSelects(categorias)
 
- //let selects = .forEach((select) => {
-   // categorias.forEach()
-  //} )
-
-
-//const categoriesList = [];
-
-
-//const createList = (lista) => {
-//$('#list').innerHTML = "";
-//lista.forEach((item) => {
-//let liContent = document.createTextNode(`${item}`);
-//let liItem = document.createElement('li');
-//let deleteButton = document.createElement('button');
-//let editButton = document.createElement('button')
-//liItem.classList.add('has-text-info', 'tag', 'is-info', 'is-light', 'mt-4');
-//editButton.classList.add('button', 'is-ghost', 'is-size-7', 'ml-6');
-//editButton.innerText = "Editar";
-//editButton.addEventListener('click', () => editItem(item));
-//deleteButton.classList.add('button', 'is-ghost', 'is-size-7');
-//deleteButton.innerText = "Eliminar";
-//deleteButton.addEventListener('click', () => deleteItem(item))
-//liItem.appendChild(liContent);
-//liItem.appendChild(editButton);
-//liItem.appendChild(deleteButton);
-//$('#list').appendChild(liItem);
-//})
-//}
 
 
 
-
-//const modificarItem = (item) => {
-//let newElement = $('#categoriesEditInput').value;
-//let itemIndex = categoriesList.indexOf(item);
-//categoriesList[itemIndex] = newElement
-//createList(categoriesList)
-//console.log(categoriesList)
-//}
-
-
-//const deleteItem = (item) => {
-//const itemIndex = categoriesList.indexOf(item);
-//categoriesList.splice(itemIndex, 1);
-//createList(categoriesList);
-//}
-
-
-//$('#addButton').addEventListener('click', addItem)
-//$('#modifyButton').addEventListener('click', modificarItem)
-//$('#cancelarButton').addEventListener('click')
 
 //EDIT
 const getOperationById = (operationId) => {
