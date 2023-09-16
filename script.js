@@ -1,5 +1,6 @@
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selectors) => document.querySelectorAll(selectors);
+const randomId = () => self.crypto.randomUUID();
 
 const filterContainer = $('.column-filter');
 const showfilters = $('#showFilters');
@@ -145,6 +146,15 @@ const generateOperationTable = (operations) => {
       </tbody>
     </table>
   `;
+    const editButtons = $$('.btnEdit');
+    editButtons.forEach((editButton) => {
+        editButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const operationId = editButton.getAttribute('data-id');
+            const operationToEdit = getOperationById(operationId);
+            fillEditForm(operationToEdit);
+        });
+    });
 };
 
 const generateNewOperation = () => {
@@ -162,6 +172,7 @@ const generateNewOperation = () => {
 $('#createOperationBtn').addEventListener('click', generateNewOperation);
 
 //DELETE
+
 const tableContainer = $("#tableContainer");
 tableContainer.addEventListener("click", (e) => {
     if (e.target.classList.contains("btnDeleted")) {
@@ -198,22 +209,166 @@ const getOperationById = (operationId) => {
     return operations.find((operation) => operation.ids === parseInt(operationId));
 };
 
-tableContainer.addEventListener("click", (e) => {
-    if (e.target.classList.contains("btnEdit")) {
-        e.stopPropagation();
-        const operationId = e.target.getAttribute("data-id");
-        const operationToEdit = getOperationById(operationId);
-        fillEditForm(operationToEdit);
-    }
-});
-
 const fillEditForm = (operation) => {
     editDescription.value = operation.descriptionOperation;
     editAmount.value = operation.amountOperation;
     editType.value = operation.operationType;
     editCategory.value = operation.selectCategoryOperation;
+    editOperationContainer.setAttribute('data-id', operation.ids);
+
     showElement(editOperationContainer);
-    hideElement(newOperationContainer)
-    hideElement(tableContainer)
+    hideElement(newOperationContainer);
+    hideElement(tableContainer);
 };
 
+$('#updateOperationBtn').addEventListener('click', () => {
+    const operationId = editOperationContainer.getAttribute('data-id');
+    const updatedOperation = {
+        descriptionOperation: editDescription.value,
+        amountOperation: parseInt(editAmount.value),
+        operationType: editType.value,
+        selectCategoryOperation: editCategory.value,
+        ids: operationId,
+    };
+    const indexToUpdate = operations.findIndex((operation) => operation.ids === parseInt(operationId));
+    if (indexToUpdate !== -1) {
+        operations[indexToUpdate] = updatedOperation;
+    }
+    sendDataFromLocalStorage('operations', operations);
+    generateOperationTable(operations);
+    showElement(tableContainer);
+    hideElement(editOperationContainer);
+});
+
+
+//CATEGORIESFUNCTIONS
+
+//Traer - Lo que ya está en el local
+
+
+const traerCategorias = () => {
+    return getDataFromLocalStorage('categories')
+}
+
+console.log(traerCategorias())
+
+let categorias = traerCategorias() || [{
+    nombre: "Comida",
+    id: randomId(),
+},
+{
+    nombre: "Servicios",
+    id: randomId(),
+},
+{
+    nombre: "Salidas",
+    id: randomId(),
+},
+{
+    nombre: "Transporte",
+    id: randomId(),
+},
+{
+    nombre: "Educación",
+    id: randomId(),
+},
+{
+    nombre: "Trabajo",
+    id: randomId(),
+},
+]
+
+
+//console.log(categorias)
+
+const listaCategorias = () => {
+    $('#categorias').innerHTML = "";
+    for (let { nombre, id } of categorias) {
+        $('#categorias').innerHTML += `<li class="is-flex is-justify-content-space-between has-text-info is-info is-light mt-4">
+    <p>${nombre}</p>
+    <div>
+      <button onclick="mostrarCategoria('${id}')" id="${id}" class="edit-btn button is-ghost is-size-7 ml-6">Editar</button>
+      <button onclick="removerCategoria('${id}')" id="${id}" class="button is-ghost is-size-7">Eliminar</button>
+    </div>
+    </li>`;
+    }
+};
+
+listaCategorias(categorias)
+
+//LOCASSTORAGE
+//Actualizar - Lo que subo
+
+const actualizarCategorias = (datos) => {
+    return sendDataFromLocalStorage('categories', datos)
+}
+
+actualizarCategorias(categorias)
+
+//BOTON AGREGAR EN CATEGORIAS
+
+const nuevaCategoria = () => {
+    let categoriaAgregada = {
+        nombre: $('#categoriesInput').value,
+        id: randomId(),
+    };
+    categorias.push(categoriaAgregada);
+    //let newArr = [...categorias, categoriaAgregada]
+    actualizarCategorias(categorias)
+    console.log(categorias)
+    //console.log(newArr)
+}
+
+
+$('#addButton').addEventListener('click', () => nuevaCategoria(listaCategorias(categorias)))
+$('#addButton').addEventListener('click', () => listaCategorias(categorias))
+
+
+//BOTON ELIMINAR EN CATEGORÍAS
+
+const removerCategoria = (id) => {
+    //let datosActualizados = traerCategorias();
+    //let categoriaAEliminar = categorias.filter((categoria) => categoria.id === id);
+    //let categoriaEliminada = categoriaAEliminar[0].splice(id, 1);
+
+
+}
+//categoriaEliminada
+//removerCategoria(categorias)
+
+//BOTON EDITAR EN LISTA DE CATEGORIAS
+
+const mostrarCategoria = (id) => {
+    showElement($('.container-editar-categoria'));
+    hideElement($('.container-categorias'));
+    let categoriaAEditar = categorias.filter((categoria) => categoria.id === id);
+    console.log(categoriaAEditar[0])
+    $('#categoriesEditInput').value = categoriaAEditar[0].nombre;
+    $('#modifyButton').addEventListener('click', () => editarCategoria(categoriaAEditar[0].id))
+}
+
+
+const editarCategoria = (id) => {
+    let nuevaCategoria = {
+        id: id,
+        nombre: $('#categoriesEditInput').value,
+    };
+    let categoriasActualizadas = categorias.map((categoria) =>
+        categoria.id === id ? { ...nuevaCategoria } : categoria
+    )
+
+    //console.log(listaCategorias(categoriasActualizadas));
+};
+
+//COMPLETARSELECTS
+
+const completarSelects = (categories) => {
+    $$('.completar-selects').forEach(select => {
+        for (let { nombre, id } of categories) {
+            select.innerHTML += `<option value="${id}">${nombre}</option>`
+        }
+    });
+
+}
+
+completarSelects(categorias)
