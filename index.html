@@ -159,7 +159,7 @@
     </div>
   </div>
 
-        <!--Sección +nueva operación-->
+  <!--Sección +nueva operación-->
 
   <div class="container is-flex is-justify-content-center is-align-items-center mt-6 ">
     <section class="section container-newOperation is-flex is-flex-direction-column box is-hidden">
@@ -210,110 +210,110 @@
     </section>
   </div>
 
-      <!--Sección categorías-->
+  <!--Sección categorías-->
 
-      <!--Contenedor superior-->
+  <!--Contenedor superior-->
 
-      <div class="container container-categorias is-flex is-justify-content-center is-align-items-center is-hidden" >
-      <section class="section box-categorias box p-4">
-        <h1 class="title is-2 has-text-weight-bold">Categorías</h1>
-        <div class="container-form is-flex is-justify-content-space-between">
+  <div class="container container-categorias is-flex is-justify-content-center is-align-items-center is-hidden">
+    <section class="section box-categorias box p-4">
+      <h1 class="title is-2 has-text-weight-bold">Categorías</h1>
+      <div class="container-form is-flex is-justify-content-space-between">
         <div class="field input-nombre">
           <label class="label">Nombre</label>
           <div class="control">
             <form id="categoriesForm">
-            <input class="input" type="text" id="categoriesInput">
+              <input class="input" type="text" id="categoriesInput">
           </div>
         </div>
         <div class="buttons p-3 mt-4">
           <button class="button is-info" id="addButton" type="button">Agregar</button>
-        </form>
+          </form>
         </div>
-        </div>
-        
-        <!--Contenedor inferior-->
-            <ul id="categorias" class="is-flex is-flex-direction-column">
-            </ul>
-      </section>
-    </div>
+      </div>
 
-    <!--Sección Editar Categoría-->
+      <!--Contenedor inferior-->
+      <ul id="categorias" class="is-flex is-flex-direction-column">
+      </ul>
+    </section>
+  </div>
 
-    <div class="container container-editar-categoria is-flex is-justify-content-center is-align-items-center is-hidden" >
-      <section class="section box-editar-categoria box p-4">
-        <h1 class="title is-2 has-text-weight-bold">Editar Categoría</h1>
-        <div class="container-form is-flex  is-justify-content-end is-flex-direction-column">
+  <!--Sección Editar Categoría-->
+
+  <div class="container container-editar-categoria is-flex is-justify-content-center is-align-items-center is-hidden">
+    <section class="section box-editar-categoria box p-4">
+      <h1 class="title is-2 has-text-weight-bold">Editar Categoría</h1>
+      <div class="container-form is-flex  is-justify-content-end is-flex-direction-column">
         <div class="field input-nombre">
           <label class="label">Nombre</label>
           <div class="control">
             <form id="categoriesForm">
-            <input class="input" type="text" id="categoriesEditInput">
+              <input class="input" type="text" id="categoriesEditInput">
           </div>
         </div>
         <div class="buttons p-3 mt-4">
           <button class="button is-info" id="modifyButton" type="button">Editar</button>
           <button class="button is-info" id="cancelarButton" type="button">Cancelar</button>
-        </form>
+          </form>
         </div>
-        </div>
-        </div>
+      </div>
+  </div>
 
   <!-- Sección Reportes -->
-      <!--Sección Reportes-->
+  <!--Sección Reportes-->
 
-      <div class="container container-reportes is-flex is-justify-content-center is-align-items-center is-hidden" >
-      <section class="section container box-reportes box p-0 ">
-        <h1 class="title is-2 has-text-weight-bold p-3">Reportes</h1>
-        <figure class="is-flex is-justify-content-center">
-          <img src="img-reportes.png" width="380px" height="380px">
-        </figure>
-        <h4 class="title has-text-centered">Operaciones insuficientes</h4>
-        <p class="has-text-centered">Prueba agrgando más operaciones</p>
-      </section>
+  <div class="container container-reportes is-flex is-justify-content-center is-align-items-center is-hidden">
+    <section class="section container box-reportes box p-0 ">
+      <h1 class="title is-2 has-text-weight-bold p-3">Reportes</h1>
+      <figure class="is-flex is-justify-content-center">
+        <img src="img-reportes.png" width="380px" height="380px">
+      </figure>
+      <h4 class="title has-text-centered">Operaciones insuficientes</h4>
+      <p class="has-text-centered">Prueba agrgando más operaciones</p>
+    </section>
+  </div>
+
+  <!-- FORMULARIO EDITAR -->
+
+  <div class="section container-editOperation is-flex is-flex-direction-column box is-hidden">
+    <h2 class="title is-2 has-text-weight-bold p-3">Editar Operación</h2>
+    <label>Descripción</label>
+    <div class="control">
+      <input class="input" type="text" id="editDescriptionOperation">
     </div>
-
-    <!-- FORMULARIO EDITAR -->   
-   
-    <div class="section container-editOperation is-flex is-flex-direction-column box is-hidden">
-      <h2 class="title is-2 has-text-weight-bold p-3">Editar Operación</h2>
-      <label>Descripción</label>
+    <div class="field">
+      <label class="label">Monto</label>
       <div class="control">
-        <input class="input" type="text" id="editDescriptionOperation">
+        <input class="input" value="0" type="number" id="editAmountOperation">
       </div>
-      <div class="field">
-        <label class="label">Monto</label>
-        <div class="control">
-          <input class="input" value="0" type="number" id="editAmountOperation">
-        </div>
+    </div>
+    <label class="label">Tipo</label>
+    <div class="control">
+      <div class="select is-fullwidth">
+        <select id="editTypeOperation">
+          <option>Todos</option>
+          <option>Gastos</option>
+          <option>Ganancias</option>
+        </select>
       </div>
-      <label class="label">Tipo</label>
+    </div>
+    <div class="field">
+      <label class="label">Categoría</label>
       <div class="control">
         <div class="select is-fullwidth">
-          <select id="editTypeOperation">
-            <option>Todos</option>
-            <option>Gastos</option>
-            <option>Ganancias</option>
+          <select id="editCategoryOperation" class="completar-selects">
           </select>
         </div>
       </div>
-      <div class="field">
-        <label class="label">Categoría</label>
-        <div class="control">
-          <div class="select is-fullwidth">
-            <select id="editCategoryOperation" class="completar-selects">
-            </select>
-          </div>
-        </div>
-      </div>
-      <label>Fecha</label>
-      <div class="control">
-        <input class="date" type="date" id="editDateOperation">
-      </div>
-        <div class="is-flex is-justify-content-end">
-          <button class="button is-info is-light" id="cancelEditBtn">Cancelar</button>
-          <button id="updateOperationBtn" class="button is-info">Editar</button>
-        </div>        
     </div>
+    <label>Fecha</label>
+    <div class="control">
+      <input class="date" type="date" id="editDateOperation">
+    </div>
+    <div class="is-flex is-justify-content-end">
+      <button class="button is-info is-light" id="cancelEditBtn">Cancelar</button>
+      <button id="updateOperationBtn" class="button is-info">Editar</button>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
