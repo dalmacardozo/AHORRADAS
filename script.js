@@ -114,7 +114,7 @@ const operationContent = () => {
     const operationType = $("#operationType").value;
     const selectCategoryOperation = $("#selectCategoryOperation").value;
     const dateOperation = $("#dateOperation").value;
-    
+
     return {
         descriptionOperation,
         amountOperation,
@@ -392,7 +392,6 @@ const completarSelects = (categories) => {
 }
 
 completarSelects(categorias)
-
 
 
 
