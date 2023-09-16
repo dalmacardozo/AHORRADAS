@@ -20,6 +20,7 @@ const editDescription = $("#editDescriptionOperation");
 const editAmount = $("#editAmountOperation");
 const editType = $("#editTypeOperation");
 const editCategory = $("#editCategoryOperation");
+const editDateOperation = $("#editDateOperation")
 
 // DOM FUNCTIONS
 const hideElement = (element) => element.classList.add('is-hidden');
@@ -27,6 +28,8 @@ const showElement = (element) => element.classList.remove('is-hidden');
 const clear = (element) => element.innerHTML = "";
 
 hideFiltersButton.addEventListener('click', () => {
+    hideElement(filterContainer);
+    showElement(showfilters);
     hideElement(filterContainer);
     showElement(showfilters);
 });
@@ -66,6 +69,19 @@ editOperationContainer.addEventListener('click', () => {
     showElement(editOperationContainer);
 });
 
+const formatDate = (date) => {
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+    const formattedDay = day < 10 ? `0${day}` : day;
+    const formattedMonth = month < 10 ? `0${month}` : month;
+    return `${formattedDay}-${formattedMonth}-${year}`;
+};
+
+const day = new Date();
+const formattedDate = formatDate(day);
+$("#dateOperation").value = formattedDate
+
 // LOCAL STORAGE
 const getDataFromLocalStorage = (key) => JSON.parse(localStorage.getItem(key));
 const sendDataFromLocalStorage = (key, array) => localStorage.setItem(key, JSON.stringify(array));
@@ -98,6 +114,7 @@ const operationContent = () => {
     const operationType = $("#operationType").value;
     const selectCategoryOperation = $("#selectCategoryOperation").value;
     const dateOperation = $("#dateOperation").value;
+
     return {
         descriptionOperation,
         amountOperation,
@@ -127,6 +144,7 @@ const generateOperationTable = (operations) => {
           <tr>
             <td>${operation.descriptionOperation}</td>
             <td>${operation.selectCategoryOperation}</td>
+            <td>${operation.dateOperation}</td>
             <td class="${operation.operationType === 'gain' ? 'has-text-success' : 'has-text-danger'}">
               ${operation.operationType === 'spending' ? '-' : '+'}
             </td>
@@ -214,6 +232,7 @@ const fillEditForm = (operation) => {
     editAmount.value = operation.amountOperation;
     editType.value = operation.operationType;
     editCategory.value = operation.selectCategoryOperation;
+    editDateOperation.value = operation.dateOperation;
     editOperationContainer.setAttribute('data-id', operation.ids);
 
     showElement(editOperationContainer);
@@ -228,6 +247,7 @@ $('#updateOperationBtn').addEventListener('click', () => {
         amountOperation: parseInt(editAmount.value),
         operationType: editType.value,
         selectCategoryOperation: editCategory.value,
+        dateOperation: editDateOperation.value,
         ids: operationId,
     };
     const indexToUpdate = operations.findIndex((operation) => operation.ids === parseInt(operationId));
@@ -372,3 +392,6 @@ const completarSelects = (categories) => {
 }
 
 completarSelects(categorias)
+
+
+
