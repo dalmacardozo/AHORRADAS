@@ -154,8 +154,8 @@ const generateNewOperation = () => {
         clear(tableContainer);
         operations.push(operationContent());
         $("#description").value = "";
-        localStorage.setItem("operations", JSON.stringify(operations));
-        generateOperationTable(JSON.parse(localStorage.getItem("operations")));
+        sendDataFromLocalStorage("operations", operations)
+        generateOperationTable(operations);
     }
 };
 
@@ -164,13 +164,13 @@ $('#createOperationBtn').addEventListener('click', generateNewOperation);
 //DELETE
 const tableContainer = $("#tableContainer");
 tableContainer.addEventListener("click", (e) => {
-     if (e.target.classList.contains("btnDeleted")) {
+    if (e.target.classList.contains("btnDeleted")) {
         e.stopPropagation();
         const operationId = e.target.getAttribute("data-id");
         deleteOperation(operationId);
         deleteOperationFromTable(operationId);
-        }
-    });
+    }
+});
 
 const deleteOperation = (operationId) => {
     clear(tableContainer);
@@ -196,7 +196,7 @@ const deleteOperationFromTable = (operationId) => {
 //EDIT
 const getOperationById = (operationId) => {
     return operations.find((operation) => operation.ids === parseInt(operationId));
-    };
+};
 
 tableContainer.addEventListener("click", (e) => {
     if (e.target.classList.contains("btnEdit")) {
