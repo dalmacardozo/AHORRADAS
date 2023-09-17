@@ -365,7 +365,8 @@ const mostrarCategoria = (id) => {
     let categoriaAEditar = categorias.filter((categoria) => categoria.id === id);
     console.log(categoriaAEditar[0])
     $('#categoriesEditInput').value = categoriaAEditar[0].nombre;
-    $('#modifyButton').addEventListener('click', () => editarCategoria(categoriaAEditar[0].id))
+    $('#modifyButton').addEventListener('click', () => editarCategoria(categoriaAEditar[0].id)); 
+    $('#modifyButton').addEventListener('click', () => showElement($('.container-categorias')))
     $('#cancelarButton').addEventListener('click', () => showElement($('.container-categorias')))
 }
 
