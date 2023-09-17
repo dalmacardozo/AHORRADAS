@@ -392,6 +392,7 @@ const completarSelects = (categories) => {
 }
 
 completarSelects(categorias)
+$('#selectCategoryFilter').addEventListener('change', ()=> {console.log($('#selectCategoryFilter').value)})
 
 
 
