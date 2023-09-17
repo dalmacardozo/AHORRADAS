@@ -265,12 +265,13 @@ $('#updateOperationBtn').addEventListener('click', () => {
 
 //Traer - Lo que ya está en el local
 
-
 const traerCategorias = () => {
     return getDataFromLocalStorage('categories')
 }
 
 console.log(traerCategorias())
+
+//Mi array de objetos
 
 let categorias = traerCategorias() || [{
     nombre: "Comida",
@@ -298,10 +299,9 @@ let categorias = traerCategorias() || [{
 },
 ]
 
+// Lista de categorías
 
-//console.log(categorias)
-
-const listaCategorias = () => {
+const listaCategorias = (categorias) => {
     $('#categorias').innerHTML = "";
     for (let { nombre, id } of categorias) {
         $('#categorias').innerHTML += `<li class="is-flex is-justify-content-space-between has-text-info is-info is-light mt-4">
@@ -358,32 +358,38 @@ const removerCategoria = (id) => {
 
 //BOTON EDITAR EN LISTA DE CATEGORIAS
 
+ 
 const mostrarCategoria = (id) => {
     showElement($('.container-editar-categoria'));
     hideElement($('.container-categorias'));
     let categoriaAEditar = categorias.filter((categoria) => categoria.id === id);
     console.log(categoriaAEditar[0])
     $('#categoriesEditInput').value = categoriaAEditar[0].nombre;
-    $('#modifyButton').addEventListener('click', () => editarCategoria(categoriaAEditar[0].id))
+    $('#modifyButton').addEventListener('click', () => editarCategoria(categoriaAEditar[0].id)); 
+    $('#modifyButton').addEventListener('click', () => showElement($('.container-categorias')))
+    $('#cancelarButton').addEventListener('click', () => showElement($('.container-categorias')))
 }
 
 
 const editarCategoria = (id) => {
+    const nombre = $('#categoriesEditInput').value
     let nuevaCategoria = {
         id: id,
-        nombre: $('#categoriesEditInput').value,
+        nombre: nombre,
     };
-    let categoriasActualizadas = categorias.map((categoria) =>
-        categoria.id === id ? { ...nuevaCategoria } : categoria
-    )
-
-    //console.log(listaCategorias(categoriasActualizadas));
+    let categoriasActualizadas = categorias.map((categoria) => 
+    categoria.id === id ? { ...nuevaCategoria } : categoria 
+)
+listaCategorias(categoriasActualizadas);
+completarSelects(categoriasActualizadas);
+actualizarCategorias(categoriasActualizadas)
 };
 
 //COMPLETARSELECTS
 
 const completarSelects = (categories) => {
     $$('.completar-selects').forEach(select => {
+        select.innerHTML = '';
         for (let { nombre, id } of categories) {
             select.innerHTML += `<option value="${id}">${nombre}</option>`
         }
@@ -392,6 +398,7 @@ const completarSelects = (categories) => {
 }
 
 completarSelects(categorias)
+$('#selectCategoryFilter').addEventListener('change', ()=> {$('#selectCategoryFilter').value})
 
 
 
