@@ -265,12 +265,13 @@ $('#updateOperationBtn').addEventListener('click', () => {
 
 //Traer - Lo que ya está en el local
 
-
 const traerCategorias = () => {
     return getDataFromLocalStorage('categories')
 }
 
 console.log(traerCategorias())
+
+//Mi array de objetos
 
 let categorias = traerCategorias() || [{
     nombre: "Comida",
@@ -298,8 +299,7 @@ let categorias = traerCategorias() || [{
 },
 ]
 
-
-//console.log(categorias)
+// Lista de categorías
 
 const listaCategorias = () => {
     $('#categorias').innerHTML = "";
@@ -365,6 +365,7 @@ const mostrarCategoria = (id) => {
     console.log(categoriaAEditar[0])
     $('#categoriesEditInput').value = categoriaAEditar[0].nombre;
     $('#modifyButton').addEventListener('click', () => editarCategoria(categoriaAEditar[0].id))
+    $('#cancelarButton').addEventListener('click', () => showElement($('.container-categorias')))
 }
 
 
