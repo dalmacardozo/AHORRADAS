@@ -262,14 +262,14 @@ $('#updateOperationBtn').addEventListener('click', () => {
 
 
 //CATEGORIESFUNCTIONS
-
+localStorage.clear()
 //Traer - Lo que ya está en el local
 
 const traerCategorias = () => {
     return getDataFromLocalStorage('categories')
 }
 
-console.log(traerCategorias())
+traerCategorias()
 
 //Mi array de objetos
 
@@ -347,25 +347,15 @@ $('#addButton').addEventListener('click', () => listaCategorias(categorias))
 //BOTON ELIMINAR EN CATEGORÍAS
 
 const removerCategoria = (id) => {
-    let categoriaAEliminar = categorias.filter((categoria) => categoria.id === id);
-    console.log(categoriaAEliminar[0]);
-    actualizarCategorias(categorias)
+    const index = categorias.findIndex((categorias)  => categorias.id === id);
+    let categoriaAEliminar = categorias.splice(index, 1);
+    let categoriaActualizada = categorias.map((categoria) => 
+    categoria.id === id ? { ...categoriaAEliminar } : categoria);
+    console.log(categoriaActualizada)
+    listaCategorias(categoriaActualizada);
+    completarSelects(categoriaActualizada);
+    actualizarCategorias(categoriaActualizada)
 }
-
-
-//   cursos.splice(indice, 1);
-//   armarSelect(cursos);
-// });
-
-    
-
-    //let datosActualizados = traerCategorias();
-    //let categoriaAEliminar = categorias.filter((categoria) => categoria.id === id);
-    //let categoriaEliminada = categoriaAEliminar[0].splice(id, 1);
-
-
-//categoriaEliminada
-//removerCategoria(categorias)
 
 //BOTON EDITAR EN LISTA DE CATEGORIAS
 
