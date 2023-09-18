@@ -347,12 +347,23 @@ $('#addButton').addEventListener('click', () => listaCategorias(categorias))
 //BOTON ELIMINAR EN CATEGORÍAS
 
 const removerCategoria = (id) => {
+    let categoriaAEliminar = categorias.filter((categoria) => categoria.id === id);
+    console.log(categoriaAEliminar[0]);
+    actualizarCategorias(categorias)
+}
+
+
+//   cursos.splice(indice, 1);
+//   armarSelect(cursos);
+// });
+
+    
+
     //let datosActualizados = traerCategorias();
     //let categoriaAEliminar = categorias.filter((categoria) => categoria.id === id);
     //let categoriaEliminada = categoriaAEliminar[0].splice(id, 1);
 
 
-}
 //categoriaEliminada
 //removerCategoria(categorias)
 
