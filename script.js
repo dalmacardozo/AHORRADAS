@@ -262,9 +262,8 @@ $('#updateOperationBtn').addEventListener('click', () => {
 
 
 //CATEGORIESFUNCTIONS
-localStorage.clear()
-//Traer - Lo que ya está en el local
 
+//Traer - Lo que ya está en el local
 const traerCategorias = () => {
     return getDataFromLocalStorage('categories')
 }
