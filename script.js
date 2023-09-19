@@ -69,6 +69,22 @@ editOperationContainer.addEventListener('click', () => {
     showElement(editOperationContainer);
 });
 
+const updateBalanceDOM = ({ totalGain, totalSpending, totalBalance }) => {
+    const gainElement = $('.has-text-success');
+    const spendingElement = $('.has-text-danger');
+    const totalElement = $('.is-size-4');
+
+    gainElement.textContent = `+${totalGain}`;
+    spendingElement.textContent = `-${totalSpending}`;
+    totalElement.textContent = `$${totalBalance}`;
+};
+
+const initializeBalance = (operations) => {
+    const balanceContainer = $('.column-balance');
+    updateBalanceDOM(calculateTotalBalance(operations));
+};
+
+
 const formatDate = (date) => {
     const day = date.getDate();
     const month = date.getMonth() + 1;
@@ -400,5 +416,21 @@ const completarSelects = (categories) => {
 completarSelects(categorias)
 $('#selectCategoryFilter').addEventListener('change', ()=> {$('#selectCategoryFilter').value})
 
+// BALANCE
 
+const calculateTotalBalance = (operations) => {
+    let totalGain = 0;
+    let totalSpending = 0;
+
+    operations.forEach((operation) => {
+        if (operation.operationType === 'gain') {
+            totalGain += operation.amountOperation;
+        } else {
+            totalSpending += operation.amountOperation;
+        }
+    });
+    const totalBalance = totalGain - totalSpending;
+    return { totalGain, totalSpending, totalBalance };
+};
+initializeBalance(operations);
 
