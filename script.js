@@ -85,18 +85,18 @@ const initializeBalance = (operations) => {
 };
 
 
-const formatDate = (date) => {
-    const day = date.getDate();
-    const month = date.getMonth() + 1;
-    const year = date.getFullYear();
-    const formattedDay = day < 10 ? `0${day}` : day;
-    const formattedMonth = month < 10 ? `0${month}` : month;
-    return `${formattedDay}-${formattedMonth}-${year}`;
-};
+let day = new Date();
+$("#dateOperation").value =
+    day.getFullYear() +
+    "-" +
+    ("0" + (day.getMonth() + 1)).slice(-2) +
+    "-" +
+    ("0" + day.getDate()).slice(-2);
 
-const day = new Date();
-const formattedDate = formatDate(day);
-$("#dateOperation").value = formattedDate
+const formatDate = (day) => {
+    const newDate = day.split("-").reverse();
+    return newDate.join("-");
+};
 
 // LOCAL STORAGE
 const getDataFromLocalStorage = (key) => JSON.parse(localStorage.getItem(key));
@@ -160,7 +160,7 @@ const generateOperationTable = (operations) => {
           <tr>
             <td>${operation.descriptionOperation}</td>
             <td>${operation.selectCategoryOperation}</td>
-            <td>${operation.dateOperation}</td>
+            <td>${formatDate(operation.dateOperation)}</td>
             <td class="${operation.operationType === 'gain' ? 'has-text-success' : 'has-text-danger'}">
               ${operation.operationType === 'spending' ? '-' : '+'}
             </td>
