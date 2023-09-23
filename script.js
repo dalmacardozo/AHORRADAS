@@ -686,6 +686,15 @@ generateReports(operations);
 
 //FILTROS
 
+const mostrarOperaciones = () => {
+    hideElement($('.container-newOperation'));
+    showElement($('.column-operation'));
+    showElement($('.column-filter'));
+    showElement($('.column-balance'));
+}
+
+$('#createOperationBtn').addEventListener('click', ()=> mostrarOperaciones())
+
 $('#filter-type').addEventListener('change', ()=> aplicarFiltro())
 
 const filtrarPorTipo = (operations, operationType) => {
@@ -712,7 +721,3 @@ filtrarPorTipo(operations, tipoFilter)
 filtrarPorCategoria(operations, categoriaFilter)
 
 
-$('#createOperationBtn').addEventListener('click', () => hideElement($('.container-newOperation')))
-$('#createOperationBtn').addEventListener('click', () => showElement($('.column-operation')))
-$('#createOperationBtn').addEventListener('click', () => showElement($('.column-filter')))
-$('#createOperationBtn').addEventListener('click', () => showElement($('.column-balance')))
