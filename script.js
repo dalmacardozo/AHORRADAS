@@ -695,29 +695,30 @@ const mostrarOperaciones = () => {
 
 $('#createOperationBtn').addEventListener('click', ()=> mostrarOperaciones())
 
-$('#filter-type').addEventListener('change', ()=> aplicarFiltro())
+//FILTRAR POR TIPO
 
 const filtrarPorTipo = (operations, operationType) => {
     return operations.filter((operation) => operation.operationType === operationType
     );
   };
-  
-  
-const filtrarPorCategoria = (operations, selectCategoryOperation,) => {
-    return operations.filter((operation) => operation.selectCategoryOperation === selectCategoryOperation);
-  };
-  
+
  const aplicarFiltros = () => {
-    
-    let operacionesFiltradas = [...operaciones]
+    let operacionesFiltradas = [...operations];
+    let filtroTipo = $("#filterType").value;
+    operacionesFiltradas = filtrarPorTipo(operations, filtroTipo);
+    generateOperationTable(operacionesFiltradas);
+}
+  
+let tipoFilter = $('#filterType').value; 
+filtrarPorTipo(operations, tipoFilter);
 
+$('#filterType').addEventListener('change', ()=> aplicarFiltros())
 
-};
-
-let tipoFilter = $('#filter-type').value;    
-let categoriaFilter = $('#selectCategoryFilter').value;
  
-filtrarPorTipo(operations, tipoFilter)
-filtrarPorCategoria(operations, categoriaFilter)
-
-
+ //const filtrarPorCategoria = (operations, selectCategoryOperation,) => {
+   // return operations.filter((operation) => operation.selectCategoryOperation === selectCategoryOperation);
+ // };
+  //filtrarPorCategoria(operations, categoriaFilter)
+  //let categoriaFilter = $('#selectCategoryFilter').value;
+  // let filtroCategoria = $("#filtro-categoria").value; 
+  //operacionesFiltradas = filtrarPorCategoria(operations, filtroCategoria);
