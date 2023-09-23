@@ -8,6 +8,7 @@ const showFiltersButton = $('#showFilters');
 const hideFiltersButton = $('#hideFilters');
 const categoriesSection = $('#categories');
 const reportesSection = $('#reportsContainer');
+const reportsContainerTable = $('#reportsContainerTable');
 const balanceSection = $('#balance');
 const categoriesContainer = $('.container-categorias');
 const balanceContainer = $('.column-balance');
@@ -35,6 +36,7 @@ const showHomeElements = () => {
     showElement(balanceContainer);
     hideElement(showFiltersButton);
     hideElement(reportesSection);
+    hideElement(reportsContainerTable)
     showElement(hideFiltersButton);
 }
 
@@ -74,7 +76,7 @@ categoriesSection.addEventListener('click', () => {
     hideElement(balanceContainer);
     hideElement(operationContainer);
     hideElement(filterContainer);
-    hideElement(reportesSection);
+    hideElement(reportsContainerTable);
     showElement(categoriesContainer);
 });
 reportesSection.addEventListener('click', () => {
@@ -82,24 +84,23 @@ reportesSection.addEventListener('click', () => {
     hideElement(operationContainer);
     hideElement(filterContainer);
     hideElement(newOperationContainer);
-    showElement(reportesContainer);
+    generateReports(operations)
 });
-// reportesButton.addEventListener('click', () => {
-//     hideElement(filterContainer);
-//     hideElement(balanceContainer);
-//     hideElement(operationContainer);
-//     hideElement(newOperationContainer);
-//     showElement(reportesContainer);
-// });
+reportesButton.addEventListener('click', () => {
+    hideElement(filterContainer);
+    hideElement(balanceContainer);
+    hideElement(operationContainer);
+    hideElement(newOperationContainer);
+    generateReports(operations)
+});
 newOperationButton.addEventListener('click', () => {
     hideElement(filterContainer);
     hideElement(balanceContainer);
     hideElement(operationContainer);
     hideElement(reportesContainer);
-    hideElement(reportesSection);
+    hideElement(reportsContainerTable);
     showElement(newOperationContainer);
 });
-
 editOperationContainer.addEventListener('click', () => {
     hideElement(filterContainer);
     hideElement(balanceContainer);
@@ -108,12 +109,10 @@ editOperationContainer.addEventListener('click', () => {
     hideElement(tableContainer)
     showElement(editOperationContainer);
 });
-
 const updateBalanceDOM = ({ totalGain, totalSpending, totalBalance }) => {
     const gainElement = $('.has-text-success');
     const spendingElement = $('.has-text-danger');
     const totalElement = $('.is-size-4');
-
     gainElement.textContent = `+${totalGain}`;
     spendingElement.textContent = `-${totalSpending}`;
     totalElement.textContent = `$${totalBalance}`;
@@ -474,7 +473,7 @@ const calculateTotalBalance = (operations) => {
 initializeBalance(operations);
 
 // REPORTES
-const reportsContainer = $('#reportsContainer');
+const reportsContainer = $('.reportsContainer');
 
 const generateReports = (operations) => {
     if (operations.length < 2) {
@@ -482,15 +481,12 @@ const generateReports = (operations) => {
     } else {
         const reportData = generateReportData(operations);
         generateReportsTable(reportData);
+        showElement(reportsContainerTable)
     }
 };
 
 const showInsufficientOperationsMessage = () => {
-    reportsContainer.innerHTML = `
-        <img src="./img-reportes.png" alt="Operaciones insuficientes" width="500px" height="500">
-        <p>OPERACIONES INSUFICIENTES</p>
-        <p>Prueba agregando dos o más operaciones</p>
-    `;
+    showElement(reportesContainer)
 };
 
 const generateReportData = (operations) => {
@@ -522,7 +518,7 @@ const generateReportsTable = ({
     totalByCategory,
     totalByMonth,
 }) => {
-    reportsContainer.innerHTML = `
+    $('#reportsContainerTable').innerHTML = `
         <h2 class="title is-4">Resumen de Informes</h2>
         <table class="table is-bordered is-fullwidth">
             <tbody>
