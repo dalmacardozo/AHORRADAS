@@ -434,3 +434,217 @@ const calculateTotalBalance = (operations) => {
 };
 initializeBalance(operations);
 
+// REPORTES
+const reportsContainer = $('#reportsContainer');
+
+const generateReports = (operations) => {
+    if (operations.length < 2) {
+        showInsufficientOperationsMessage();
+    } else {
+        const reportData = generateReportData(operations);
+        generateReportsTable(reportData);
+    }
+};
+
+const showInsufficientOperationsMessage = () => {
+    reportsContainer.innerHTML = `
+        <img src="./img-reportes.png" alt="Operaciones insuficientes" width="500px" height="500">
+        <p>OPERACIONES INSUFICIENTES</p>
+        <p>Prueba agregando dos o más operaciones</p>
+    `;
+};
+
+const generateReportData = (operations) => {
+    const categoryWithHighestGain = getCategoryWithHighestGain(operations);
+    const categoryWithHighestSpending = getCategoryWithHighestSpending(operations);
+    const categoryWithHighestBalance = getCategoryWithHighestBalance(operations);
+    const monthWithHighestGain = getMonthWithHighestGain(operations);
+    const monthWithHighestSpending = getMonthWithHighestSpending(operations);
+    const totalByCategory = calculateTotalByCategory(operations);
+    const totalByMonth = calculateTotalByMonth(operations);
+
+    return {
+        categoryWithHighestGain,
+        categoryWithHighestSpending,
+        categoryWithHighestBalance,
+        monthWithHighestGain,
+        monthWithHighestSpending,
+        totalByCategory,
+        totalByMonth,
+    };
+};
+
+const generateReportsTable = ({
+    categoryWithHighestGain,
+    categoryWithHighestSpending,
+    categoryWithHighestBalance,
+    monthWithHighestGain,
+    monthWithHighestSpending,
+    totalByCategory,
+    totalByMonth,
+}) => {
+    reportsContainer.innerHTML = `
+        <h2 class="title is-4">Resumen de Informes</h2>
+        <table class="table is-bordered is-fullwidth">
+            <tbody>
+                <tr>
+                    <td>Categoría con mayor ganancia:</td>
+                    <td>${categoryWithHighestGain}</td>
+                </tr>
+                <tr>
+                    <td>Categoría con mayor gasto:</td>
+                    <td>${categoryWithHighestSpending}</td>
+                </tr>
+                <tr>
+                    <td>Categoría con mayor balance:</td>
+                    <td>${categoryWithHighestBalance}</td>
+                </tr>
+                <tr>
+                    <td>Mes con mayor ganancia:</td>
+                    <td>${monthWithHighestGain}</td>
+                </tr>
+                <tr>
+                    <td>Mes con mayor gasto:</td>
+                    <td>${monthWithHighestSpending}</td>
+                </tr>
+            </tbody>
+        </table>   
+        <h3 class="title is-5">Totales por Categoría:</h3>
+        <table class="table is-bordered is-fullwidth">
+            <thead>
+                <tr>
+                    <th>Categoría</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                ${Object.keys(totalByCategory).map(category => `
+                    <tr>
+                        <td>${category}</td>
+                        <td>$${totalByCategory[category]}</td>
+                    </tr>
+                `).join('')}
+            </tbody>
+        </table>    
+        <h3 class="title is-5">Totales por Mes:</h3>
+        <table class="table is-bordered is-fullwidth">
+            <thead>
+                <tr>
+                    <th>Mes</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                ${Object.keys(totalByMonth).map(month => `
+                    <tr>
+                        <td>${month}</td>
+                        <td>$${totalByMonth[month]}</td>
+                    </tr>
+                `).join('')}
+            </tbody>
+        </table>
+    `;
+};
+const getCategoryWithHighestGain = (operations) => {
+    const gainByCategory = operations.reduce((result, operation) => {
+        if (operation.operationType === 'gain') {
+            const category = operation.selectCategoryOperation;
+            result[category] = (result[category] || 0) + operation.amountOperation;
+        }
+        return result;
+    }, {});
+
+    const highestGainCategory = Object.keys(gainByCategory).reduce((prevCategory, currentCategory) => {
+        return gainByCategory[currentCategory] > gainByCategory[prevCategory] ? currentCategory : prevCategory;
+    }, Object.keys(gainByCategory)[0]);
+
+    return highestGainCategory;
+};
+
+const getCategoryWithHighestSpending = (operations) => {
+    const spendingByCategory = operations.reduce((result, operation) => {
+        if (operation.operationType === 'spending') {
+            const category = operation.selectCategoryOperation;
+            result[category] = (result[category] || 0) + operation.amountOperation;
+        }
+        return result;
+    }, {});
+
+    const highestSpendingCategory = Object.keys(spendingByCategory).reduce((prevCategory, currentCategory) => {
+        return spendingByCategory[currentCategory] > spendingByCategory[prevCategory] ? currentCategory : prevCategory;
+    }, Object.keys(spendingByCategory)[0]);
+
+    return highestSpendingCategory;
+};
+
+const getCategoryWithHighestBalance = (operations) => {
+    const { totalGain, totalSpending } = calculateTotalBalance(operations);
+    return totalGain > totalSpending ? 'Ganancias' : 'Gastos';
+};
+
+const getMonthWithHighestGain = (operations) => {
+    const gainByMonth = operations.reduce((result, operation) => {
+        if (operation.operationType === 'gain') {
+            const monthYear = operation.dateOperation.slice(0, 7);
+            result[monthYear] = (result[monthYear] || 0) + operation.amountOperation;
+        }
+        return result;
+    }, {});
+
+    const highestGainMonth = Object.keys(gainByMonth).reduce((prevMonth, currentMonth) => {
+        return gainByMonth[currentMonth] > gainByMonth[prevMonth] ? currentMonth : prevMonth;
+    }, Object.keys(gainByMonth)[0]);
+
+    return highestGainMonth;
+};
+
+const getMonthWithHighestSpending = (operations) => {
+    const spendingByMonth = operations.reduce((result, operation) => {
+        if (operation.operationType === 'spending') {
+            const monthYear = operation.dateOperation.slice(0, 7);
+            result[monthYear] = (result[monthYear] || 0) + operation.amountOperation;
+        }
+        return result;
+    }, {});
+
+    const highestSpendingMonth = Object.keys(spendingByMonth).reduce((prevMonth, currentMonth) => {
+        return spendingByMonth[currentMonth] > spendingByMonth[prevMonth] ? currentMonth : prevMonth;
+    }, Object.keys(spendingByMonth)[0]);
+
+    return highestSpendingMonth;
+};
+
+const calculateTotalByCategory = (operations) => {
+    const totalsByCategory = operations.reduce((result, operation) => {
+        const category = operation.selectCategoryOperation;
+        if (!result[category]) {
+            result[category] = 0;
+        }
+        if (operation.operationType === 'gain') {
+            result[category] += operation.amountOperation;
+        } else {
+            result[category] -= operation.amountOperation;
+        }
+        return result;
+    }, {});
+
+    return totalsByCategory;
+};
+
+const calculateTotalByMonth = (operations) => {
+    const totalsByMonth = operations.reduce((result, operation) => {
+        const monthYear = operation.dateOperation.slice(0, 7);
+        if (!result[monthYear]) {
+            result[monthYear] = 0;
+        }
+        if (operation.operationType === 'gain') {
+            result[monthYear] += operation.amountOperation;
+        } else {
+            result[monthYear] -= operation.amountOperation;
+        }
+        return result;
+    }, {});
+
+    return totalsByMonth;
+};
+generateReports(operations);
