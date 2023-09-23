@@ -683,3 +683,36 @@ const calculateTotalByMonth = (operations) => {
     return totalsByMonth;
 };
 generateReports(operations);
+
+//FILTROS
+
+$('#filter-type').addEventListener('change', ()=> aplicarFiltro())
+
+const filtrarPorTipo = (operations, operationType) => {
+    return operations.filter((operation) => operation.operationType === operationType
+    );
+  };
+  
+  
+const filtrarPorCategoria = (operations, selectCategoryOperation,) => {
+    return operations.filter((operation) => operation.selectCategoryOperation === selectCategoryOperation);
+  };
+  
+ const aplicarFiltros = () => {
+    
+    let operacionesFiltradas = [...operaciones]
+
+
+};
+
+let tipoFilter = $('#filter-type').value;    
+let categoriaFilter = $('#selectCategoryFilter').value;
+ 
+filtrarPorTipo(operations, tipoFilter)
+filtrarPorCategoria(operations, categoriaFilter)
+
+
+$('#createOperationBtn').addEventListener('click', () => hideElement($('.container-newOperation')))
+$('#createOperationBtn').addEventListener('click', () => showElement($('.column-operation')))
+$('#createOperationBtn').addEventListener('click', () => showElement($('.column-filter')))
+$('#createOperationBtn').addEventListener('click', () => showElement($('.column-balance')))
