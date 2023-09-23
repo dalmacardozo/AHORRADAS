@@ -7,7 +7,7 @@ const showfilters = $('#showFilters');
 const showFiltersButton = $('#showFilters');
 const hideFiltersButton = $('#hideFilters');
 const categoriesSection = $('#categories');
-const reportesSection = $('#reports');
+const reportesSection = $('#reportsContainer');
 const balanceSection = $('#balance');
 const categoriesContainer = $('.container-categorias');
 const balanceContainer = $('.column-balance');
@@ -21,11 +21,42 @@ const editAmount = $("#editAmountOperation");
 const editType = $("#editTypeOperation");
 const editCategory = $("#editCategoryOperation");
 const editDateOperation = $("#editDateOperation")
+const reportesButton = $('#reportesButton');
+const homeButton = $('#home');
 
 // DOM FUNCTIONS
 const hideElement = (element) => element.classList.add('is-hidden');
 const showElement = (element) => element.classList.remove('is-hidden');
 const clear = (element) => element.innerHTML = "";
+
+ 
+const showHomeElements = () => {
+    showElement(operationContainer);
+    showElement(balanceContainer);
+    hideElement(showFiltersButton);
+    hideElement(reportesSection);
+    showElement(hideFiltersButton);
+}
+
+const hideHomeElements = () => {
+    hideElement(operationContainer);
+    hideElement(balanceContainer);
+    showElement(showFiltersButton);
+    hideElement(hideFiltersButton);
+}
+
+homeButton.addEventListener('click', () => {
+    showHomeElements();
+});
+
+window.addEventListener('load', () => {
+    const currentURL = window.location.href;
+    if (currentURL.endsWith('index.html')) { 
+        showHomeElements(); 
+    } else {
+        hideHomeElements(); 
+    }
+});
 
 hideFiltersButton.addEventListener('click', () => {
     hideElement(filterContainer);
@@ -43,20 +74,29 @@ categoriesSection.addEventListener('click', () => {
     hideElement(balanceContainer);
     hideElement(operationContainer);
     hideElement(filterContainer);
+    hideElement(reportesSection);
     showElement(categoriesContainer);
 });
-
 reportesSection.addEventListener('click', () => {
     hideElement(balanceContainer);
     hideElement(operationContainer);
     hideElement(filterContainer);
+    hideElement(newOperationContainer);
     showElement(reportesContainer);
 });
-
+// reportesButton.addEventListener('click', () => {
+//     hideElement(filterContainer);
+//     hideElement(balanceContainer);
+//     hideElement(operationContainer);
+//     hideElement(newOperationContainer);
+//     showElement(reportesContainer);
+// });
 newOperationButton.addEventListener('click', () => {
     hideElement(filterContainer);
     hideElement(balanceContainer);
     hideElement(operationContainer);
+    hideElement(reportesContainer);
+    hideElement(reportesSection);
     showElement(newOperationContainer);
 });
 
@@ -82,8 +122,7 @@ const updateBalanceDOM = ({ totalGain, totalSpending, totalBalance }) => {
 const initializeBalance = (operations) => {
     const balanceContainer = $('.column-balance');
     updateBalanceDOM(calculateTotalBalance(operations));
-};
-
+}; 
 
 let day = new Date();
 $("#dateOperation").value =
