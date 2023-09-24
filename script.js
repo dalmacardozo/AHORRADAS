@@ -38,6 +38,7 @@ const showHomeElements = () => {
     hideElement(reportesSection);
     hideElement(reportsContainerTable)
     showElement(hideFiltersButton);
+    showElement(filterContainer);
 }
 
 const hideHomeElements = () => {
@@ -45,6 +46,7 @@ const hideHomeElements = () => {
     hideElement(balanceContainer);
     showElement(showFiltersButton);
     hideElement(hideFiltersButton);
+    hideElement(filterContainer);
 }
 
 homeButton.addEventListener('click', () => {
