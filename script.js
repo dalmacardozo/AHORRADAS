@@ -80,12 +80,15 @@ categoriesSection.addEventListener('click', () => {
     hideElement(filterContainer);
     hideElement(reportsContainerTable);
     showElement(categoriesContainer);
+    showElement($('.box-categorias'));
+    hideElement($('.contenedor-operaciones-agregar'))
 });
 reportesSection.addEventListener('click', () => {
     hideElement(balanceContainer);
     hideElement(operationContainer);
     hideElement(filterContainer);
     hideElement(newOperationContainer);
+    hideElement($('.contenedor-operaciones-agregar'))
     generateReports(operations)
 });
 reportesButton.addEventListener('click', () => {
@@ -93,6 +96,8 @@ reportesButton.addEventListener('click', () => {
     hideElement(balanceContainer);
     hideElement(operationContainer);
     hideElement(newOperationContainer);
+    hideElement($('.box-categorias'));
+    hideElement($('.container-categorias'))
     generateReports(operations)
 });
 newOperationButton.addEventListener('click', () => {
@@ -196,16 +201,6 @@ const operationContent = () => {
 const generateOperationTable = (operations) => {
     const tableContainer = $(".column-operation");
     tableContainer.innerHTML = `
-    <div class="column is-7">
-        <div class="columns column-operation box p-5 is-flex-wrap-wrap m-0">
-          <div class="column is-6 container-superior">
-            <h4 class="title is-4">
-              Operaciones
-            </h4>
-          </div>
-          <div class="column is-6 container-superior is-flex is-justify-content-right">
-            <button class="button is-info" id="newOperationBtn">+ Nueva operación</button>
-          </div>
     <table class="table is-fullwidth">
       <thead>
         <tr>
@@ -710,12 +705,19 @@ const calculateTotalByMonth = (operations) => {
 generateReports(operations);
 
 //FILTROS
+const operacionesAgregar = () => {
+    hideElement($('.contenedor-operaciones-agregar'));
+}
+
+$('#newOperationBtn').addEventListener('click', ()=> operacionesAgregar())
 
 const mostrarOperaciones = () => {
     hideElement($('.container-newOperation'));
     showElement($('.column-operation'));
     showElement($('.column-filter'));
     showElement($('.column-balance'));
+    showElement($('.contenedor-operaciones-agregar'))
+
 }
 
 $('#createOperationBtn').addEventListener('click', ()=> mostrarOperaciones())
