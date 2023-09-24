@@ -24,7 +24,7 @@ const editCategory = $("#editCategoryOperation");
 const editDateOperation = $("#editDateOperation")
 const reportesButton = $('#reportesButton');
 const homeButton = $('#home');
-
+const tableContainer = $(".column-operation");
 // DOM FUNCTIONS
 const hideElement = (element) => element.classList.add('is-hidden');
 const showElement = (element) => element.classList.remove('is-hidden');
@@ -101,6 +101,18 @@ newOperationButton.addEventListener('click', () => {
     hideElement(reportsContainerTable);
     showElement(newOperationContainer);
 });
+const showBalanceAndFilters = () => {
+    showElement(balanceContainer);
+    showElement(filterContainer);
+    hideElement(tableContainer);
+};
+
+const showOperationTable = () => {
+    hideElement(balanceContainer);
+    hideElement(filterContainer);
+    showElement(tableContainer);
+};
+
 editOperationContainer.addEventListener('click', () => {
     hideElement(filterContainer);
     hideElement(balanceContainer);
@@ -180,8 +192,18 @@ const operationContent = () => {
 };
 
 const generateOperationTable = (operations) => {
-    const tableContainer = $("#tableContainer");
+    const tableContainer = $(".column-operation");
     tableContainer.innerHTML = `
+    <div class="column is-7">
+        <div class="columns column-operation box p-5 is-flex-wrap-wrap m-0">
+          <div class="column is-6 container-superior">
+            <h4 class="title is-4">
+              Operaciones
+            </h4>
+          </div>
+          <div class="column is-6 container-superior is-flex is-justify-content-right">
+            <button class="button is-info" id="newOperationBtn">+ Nueva operación</button>
+          </div>
     <table class="table is-fullwidth">
       <thead>
         <tr>
@@ -217,6 +239,7 @@ const generateOperationTable = (operations) => {
         `).join('')}
       </tbody>
     </table>
+    </div>
   `;
     const editButtons = $$('.btnEdit');
     editButtons.forEach((editButton) => {
@@ -228,7 +251,6 @@ const generateOperationTable = (operations) => {
         });
     });
 };
-
 const generateNewOperation = () => {
     if ($("#description").value === "") {
         return alert("Debe ingresar un nombre para la operación");
@@ -236,16 +258,17 @@ const generateNewOperation = () => {
         clear(tableContainer);
         operations.push(operationContent());
         $("#description").value = "";
-        sendDataFromLocalStorage("operations", operations)
+        sendDataFromLocalStorage("operations", operations);
+        showBalanceAndFilters();
         generateOperationTable(operations);
     }
 };
+showOperationTable();
 
 $('#createOperationBtn').addEventListener('click', generateNewOperation);
 
 //DELETE
 
-const tableContainer = $("#tableContainer");
 tableContainer.addEventListener("click", (e) => {
     if (e.target.classList.contains("btnDeleted")) {
         e.stopPropagation();
