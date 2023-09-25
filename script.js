@@ -753,3 +753,21 @@ const filtrarPorCategoria = (operations, selectCategoryOperation,) => {
  }
 
  $('#selectCategoryFilter').addEventListener('change', () => aplicarFiltroCategoria())
+
+ //FILTRAR POR FECHA
+
+const filtrarPorFecha = (operations, dateOperation) => {
+    return operations.filter((operation) => operation.dateOperation === dateOperation)
+      };
+
+const aplicarFiltroFecha = () => {
+    let operacionesFiltradas = [...operations];
+    let filtroFecha = $('#input-fecha').value;
+    operacionesFiltradas = filtrarPorFecha(operations, filtroFecha);
+    generateOperationTable(operacionesFiltradas);
+    };
+
+$('#input-fecha').addEventListener('change', ()=> aplicarFiltroFecha())
+    
+
+//console.log(filtrarPorFecha())
