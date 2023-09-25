@@ -2,18 +2,7 @@ body{
     min-height: 100vh;
 }
 
-.column-balance {
-    height: 30vh;
-}
 
-.column-operation{
-    height: 70vh;
-}
-
-.column-filter{
-    height: 50vh;
-
-}
 
 .container-superior{
     height: 10%;
@@ -45,7 +34,7 @@ body{
 
 .container-reportes{
     height: 80vh;
-    width: 95vh;
+    width: 90vh;
 }
 
 .box-reportes{
@@ -53,3 +42,10 @@ body{
     width: 10vh;
 }
 
+.container-newoperation, .container-editar{
+    width: 90vh;
+}
+
+.box-editar-categoria {
+    width: 90vh;
+}
