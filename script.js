@@ -704,6 +704,7 @@ const calculateTotalByMonth = (operations) => {
 };
 generateReports(operations);
 
+
 //FILTROS
 const operacionesAgregar = () => {
     hideElement($('.contenedor-operaciones-agregar'));
@@ -740,7 +741,6 @@ $('#filterType').addEventListener('change', ()=> aplicarFiltroTipo())
 
 //FILTRAR POR CATEGORIA
 
- 
 const filtrarPorCategoria = (operations, selectCategoryOperation,) => {
     return operations.filter((operation) => operation.selectCategoryOperation === selectCategoryOperation);
  };
@@ -753,3 +753,19 @@ const filtrarPorCategoria = (operations, selectCategoryOperation,) => {
  }
 
  $('#selectCategoryFilter').addEventListener('change', () => aplicarFiltroCategoria())
+
+ //FILTRAR POR FECHA
+
+const filtrarPorFecha = (operations, dateOperation) => {
+    return operations.filter((operation) => operation.dateOperation === dateOperation)
+      };
+
+const aplicarFiltroFecha = () => {
+    let operacionesFiltradas = [...operations];
+    let filtroFecha = $('#input-fecha').value;
+    operacionesFiltradas = filtrarPorFecha(operations, filtroFecha);
+    generateOperationTable(operacionesFiltradas);
+    };
+
+$('#input-fecha').addEventListener('change', ()=> aplicarFiltroFecha())
+    
