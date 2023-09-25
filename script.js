@@ -54,6 +54,7 @@ homeButton.addEventListener('click', () => {
 });
 
 window.addEventListener('load', () => {
+    completarSelects(categorias)
     const currentURL = window.location.href;
     if (currentURL.endsWith('index.html')) { 
         showHomeElements(); 
@@ -216,7 +217,7 @@ const generateOperationTable = (operations) => {
         ${operations.map((operation) => `
           <tr>
             <td>${operation.descriptionOperation}</td>
-            <td>${operation.selectCategoryOperation}</td>
+            <td>${getCategoryNameById(operation.selectCategoryOperation)}</td>
             <td>${formatDate(operation.dateOperation)}</td>
             <td class="${operation.operationType === 'gain' ? 'has-text-success' : 'has-text-danger'}">
               ${operation.operationType === 'spending' ? '-' : '+'}
@@ -248,6 +249,11 @@ const generateOperationTable = (operations) => {
         });
     });
 };
+const getCategoryNameById = (categoryId) => {
+    const category = categorias.find(cat => cat.id === categoryId);
+    return category ? category.nombre : '';
+};
+
 const generateNewOperation = () => {
     if ($("#description").value === "") {
         return alert("Debe ingresar un nombre para la operación");
@@ -406,10 +412,8 @@ const nuevaCategoria = () => {
         id: randomId(),
     };
     categorias.push(categoriaAgregada);
-    //let newArr = [...categorias, categoriaAgregada]
-    actualizarCategorias(categorias)
-    console.log(categorias)
-    //console.log(newArr)
+    actualizarCategorias(categorias);
+    completarSelects(categorias);
 }
 
 
@@ -468,7 +472,6 @@ const completarSelects = (categories) => {
             select.innerHTML += `<option value="${id}">${nombre}</option>`
         }
     });
-
 }
 
 completarSelects(categorias)
@@ -769,3 +772,4 @@ const aplicarFiltroFecha = () => {
 
 $('#input-fecha').addEventListener('change', ()=> aplicarFiltroFecha())
     
+//
