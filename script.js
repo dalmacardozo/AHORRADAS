@@ -772,4 +772,41 @@ const aplicarFiltroFecha = () => {
 
 $('#input-fecha').addEventListener('change', ()=> aplicarFiltroFecha())
     
-//
+//MENU
+
+$('#nav-btnBalance').addEventListener('click', ()=> {
+    showElement(balanceContainer);
+    showElement(operationContainer);
+    showElement(filterContainer);
+    hideElement(newOperationContainer);
+    showElementElement($('.contenedor-operaciones-agregar'))
+    hideElement(categoriesContainer);
+    hideElement($('.box-categorias'))
+    hideElement(reportsContainerTable)
+});;
+
+$('#nav-btnCategories').addEventListener('click', ()=> {
+    hideElement(balanceContainer);
+    hideElement(operationContainer);
+    hideElement(filterContainer);
+    hideElement(reportsContainerTable);
+    showElement(categoriesContainer);
+    showElement($('.box-categorias'));
+    hideElement($('.contenedor-operaciones-agregar'))}
+);
+
+$('#nav-btnReports').addEventListener('click', ()=> {
+    hideElement(balanceContainer);
+    hideElement(operationContainer);
+    hideElement(filterContainer);
+    hideElement(newOperationContainer);
+    hideElement($('.contenedor-operaciones-agregar'))
+    hideElement(categoriesContainer);
+    hideElement($('.box-categorias'))
+    hideElement($('.container-categorias'))
+    generateReports(operations)
+});;
+
+$('#menu-btn').addEventListener('click', ()=> showElement($('.menu-list')));
+$('#menu-btn').addEventListener('click', ()=> hideElement($('#menu-btn')))
+
