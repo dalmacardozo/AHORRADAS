@@ -22,12 +22,20 @@
           <i class="fas fa-wallet mr-2" aria-hidden="true"></i>
           AhorrADAss
         </h1>
+        
       </a>
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <ul class="menu-list is-hidden">
+        <i class="fa-solid fa-xmark"></i>
+          <li><button type="button" id="nav-btnBalance" class="button is-link is-inverted is-small p-2">Balance</button></li>
+          <li><button type="button" id="nav-btnCategories" class="button is-link is-inverted is-small p-2">Categorías</button></li>
+          <li><button type="button" id="nav-btnReports" class="button is-link is-inverted is-small p-2">Reportes</button></li>
+        </ul>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample" id="menu-btn">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
-      </a>
+        </a>
+        
     </div>
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-end">
@@ -219,6 +227,7 @@
   <!--Contenedor superior-->
 
   <div class="container container-categorias is-flex is-justify-content-center is-align-items-center is-hidden">
+    
     <section class="section box-categorias box p-4">
       <h1 class="title is-2 has-text-weight-bold">Categorías</h1>
       <div class="container-form is-flex is-justify-content-space-between">
